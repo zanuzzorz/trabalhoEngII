@@ -6,11 +6,11 @@ Objetivo do sistema é automatizar o atendimento em bares e restaurantes, com o 
 
 <h4>1.1	*Integrantes*
 
--  [Douglas Borges](https://github.com/joaogehlen91)
+-  [Douglas Borges](https://github.com/douglasbb)
 -  [João Gehlen](https://github.com/joaogehlen91)
 -  [Natan J. Mai](https://github.com/NatanJMai)
 -  [Ricardo Zanuzzo](https://github.com/zanuzzorz)
--  [Rogério Torchelsen](https://github.com/joaogehlen91)
+-  [Rogério Torchelsen](https://github.com/RogerioSchmidt)
 -  [Lucas Kranz](https://github.com/lucaskranz)
 -  [Mateus Trebien](https://github.com/mateustrebien)
 -  [Maicon Ghidolin](https://github.com/maiconlee)
