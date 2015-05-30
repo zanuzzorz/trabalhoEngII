@@ -1,0 +1,97 @@
+/* ------------------------------------------------------- */
+/* Index */
+body {
+	background: lightgray;
+}
+.div_IniciaAtendimento {
+	margin-top: 15%;
+}
+.div_IniciaAtendimento .btn-success {
+	padding-top: 80px;
+	height: 200px;
+	width: 300px;
+	box-shadow: 0px 0px 10px 0px #424242;
+	font-size: 25px;
+	transition: 0.5s;
+}
+
+/* ------------------------------------------------------- */
+/*Inicio*/
+.div_InicioTotal {
+	padding-top: 30px;
+}
+
+.img_Logo {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.div_InicioTotal .div_InicioCategoria {
+	padding-top: 20px;
+}
+
+.owl-carousel .item img {
+	height: 200px;
+	padding: 10px;
+}
+#owl_Produtos .owl-pagination {
+	display: none;
+}
+.customNavigation .next {
+	position: absolute ;
+	top: 170px;
+	right: -25px; 
+	font-size: 27px;
+	color: #333;
+	box-shadow: none;
+}
+.customNavigation .prev {
+	position: absolute ;
+	top: 170px;
+	left: -25px; 
+	font-size: 27px;
+	color: #333;
+	box-shadow: none;
+}
+
+.form_Quantidade {
+	width: 330px;
+}
+
+.div_InicioPedido {
+	padding-bottom: 30px;
+}
+
+/* ------------------------------------------------------- */
+/*Ver Pedidos*/
+.div_VerPedidosTotal {
+	padding-bottom: 30px;
+}
+.div_VerPedidosTotal .table {
+	margin-top: 30px;
+}
+
+.div_VerPedidosTotal .glyphicon-minus {
+	margin-left: 20px;
+}
+
+.div_VerPedidosTotal .div-valorPedido h4 span {
+	font-size: 25px;
+	font-weight: 700;
+}
+
+
+/* ------------------------------------------------------- */
+/*Login / Cadastro*/
+.div_LoginTotal,
+.div_CadastroTotal {
+	padding-top: 30px;
+}
+.div-Login,
+.div-Cadastro {
+	padding-top: 30px;
+	margin-left: 30%;
+	width: 444px;
+}
+
