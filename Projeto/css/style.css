@@ -80,14 +80,21 @@ body {
 	font-size: 25px;
 	font-weight: 700;
 }
+.div_VerPedidosAdmin .form-control {
+	width: 250px;
+    height: 25px;
+    font-size: 11px;
+}
 
 
 /* ------------------------------------------------------- */
 /*Login / Cadastro*/
+.div_RecuperaSenha,
 .div_LoginTotal,
 .div_CadastroTotal {
 	padding-top: 30px;
 }
+.div-RecuperaSenha,
 .div-Login,
 .div-Cadastro {
 	padding-top: 30px;
@@ -95,3 +102,26 @@ body {
 	width: 444px;
 }
 
+/* ------------------------------------------------------- */
+/* Administrador */
+.div_Administrador {
+	margin-top: 10%;
+}
+.div_Administrador .btn-success {
+	padding-top: 70px;
+	height: 150px;
+	width: 80%;
+	box-shadow: 0px 0px 10px 0px #424242;
+	font-size: 25px;
+	transition: 0.5s;
+}
+
+.div_Administrador_botoes .btn-success {
+	margin-top: 5%;
+    padding-top: 6%;
+	height: 90px;
+	width: 65%;
+	box-shadow: 0px 0px 10px 0px #424242;
+	font-size: 15px;
+	transition: 0.5s;
+}
