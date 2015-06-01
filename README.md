@@ -19,6 +19,6 @@ Objetivo do sistema é automatizar o atendimento em bares e restaurantes, com o 
 -  [Vinicius Chimello](https://github.com/joaogehlen91)
 -  [Laurivan Sareta](https://github.com/laurivansareta)
 	
-<h3>2.	Tecnologias
+<h3>2.	Tecnologias</h3>
 
 Como o sistema deve funcionar em qualquer dispositivo que possua um navegador web com internet, será desenvolvido usando PHP para o back-end, HTML e CSS para a parte front-end, e MySql para o banco de dados. 
