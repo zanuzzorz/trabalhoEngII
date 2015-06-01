@@ -16,7 +16,7 @@ Objetivo do sistema é automatizar o atendimento em bares e restaurantes, com o 
 -  [Lucas Kranz](https://github.com/lucaskranz)
 -  [Mateus Trebien](https://github.com/mateustrebien)
 -  [Maicon Ghidolin](https://github.com/maiconlee)
--  [Vinicius Chimello](https://github.com/joaogehlen91)
+-  [Vinicius Chimello](https://github.com/vinich)
 -  [Laurivan Sareta](https://github.com/laurivansareta)
 	
 <h3>2.	Tecnologias</h3>
