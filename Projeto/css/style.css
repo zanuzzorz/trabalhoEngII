@@ -85,6 +85,9 @@ body {
     height: 25px;
     font-size: 11px;
 }
+.div_BotaoVoltar {
+	padding-left: 0;
+}
 
 
 /* ------------------------------------------------------- */
