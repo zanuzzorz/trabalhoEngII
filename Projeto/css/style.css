@@ -34,6 +34,8 @@ body {
 .owl-carousel .item img {
 	height: 200px;
 	padding: 10px;
+	display: block;
+	margin: 0 auto;
 }
 #owl_Produtos .owl-pagination {
 	display: none;
@@ -128,3 +130,108 @@ body {
 	font-size: 15px;
 	transition: 0.5s;
 }
+
+/* ------------------------------------------------------- */
+/* Mesas Disponiveis */
+.div_MesasDispTotal,
+.div_MesasDispTotal * {
+	transition: 0.7s;
+}
+
+.div_MesasDispTotal {
+	padding: 30px 0;
+}
+.div_MesasDispTotal .img_Logo{
+	margin-bottom: 20px;
+}
+.div_MesasDispTotal .h2_Titulo{
+	padding: 30px 0;
+}
+
+.div_MesasDispTotal .div_MesasDisp {
+	/*padding: 10px 0;
+	margin: 10px 0; 
+	border: 1px dashed #303030;*/
+	margin-bottom: 20px;
+}
+.div_MesasDispTotal .div_MesasDisp .div_Mesas:hover {
+	transform: translateY(-15px);
+}
+
+.div_MesasDispTotal .div_MesasDisp .p_Mesa0 {
+	padding-top: 25px;
+	border: 3px solid red;
+	border-radius: 50%;
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+}
+.div_MesasDispTotal .div_MesasDisp .p_Mesa1 {
+	padding-top: 25px;
+	border: 3px solid green;
+	border-radius: 50%;
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+}
+.div_MesasDispTotal .div_MesasDisp .p_Mesa2 {
+	padding-top: 25px;
+	border: 3px solid goldenrod ;
+	border-radius: 50%;
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+}
+
+
+.div_LegendaMesas {
+	cursor: pointer;
+}
+.div_LegendaMesas:hover .p_Legenda {
+	transform: scale(1.2);
+}
+.div_LegendaMesas:hover .p_StatusMesa {
+	font-weight: bold !important;
+}
+
+
+.div_MesasDispTotal .p_Legenda0 {
+	position: relative;
+	top: 15px;
+	background-color: red;
+	border: 3px solid red;
+	border-radius: 50%;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+}
+.div_MesasDispTotal .p_Legenda1 {
+	position: relative;
+	top: 15px;
+	background-color: green;
+	border: 3px solid green;
+	border-radius: 50%;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+}
+.div_MesasDispTotal .p_Legenda2 {
+	position: relative;
+	top: 15px;
+	background-color: goldenrod;
+	border: 3px solid goldenrod;
+	border-radius: 50%;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+}
+.div_MesasDispTotal .p_StatusMesa {
+	padding-left: 20px;
+	display: inline;
+}
+
+.div_MesasDispTotal .div_BotaoVoltar {
+	margin-top: 40px;
+
+}
+
