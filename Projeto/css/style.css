@@ -235,3 +235,22 @@ body {
 
 }
 
+#div_Categoria {
+	position: absolute;
+}
+
+#div_Subcategoria {
+	position: absolute;
+	left: 60%;
+}
+
+#exampleInputTempo {
+	width: 20%;
+}
+#exampleInputPreco {
+	width: 25%;
+}
+
+#div_Preco {
+	position: relative;
+}
