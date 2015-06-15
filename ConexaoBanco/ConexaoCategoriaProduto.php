@@ -3,17 +3,15 @@
 	class ConexaoCategoriaProduto extends ConexaoBase {
 
 		//A função inserir será nesse estilo
-		/*public function inserirCategoriaProduto($obj){
-			$Sql="INSERT INTO categoria_produto () VALUES ()";
-			return parent::insert($Sql);
-		}*/
-
-		//A função atualizar será nesse estilo
-		/*public function atualizarCategoriaProduto($obj){
-			$Sql="update categoria_produto set numero ='" . $obj->get_name() . "', complemento ='" . $obj->get_phone() . "', estado ='" . $obj->get_email() . "',";
-			$Sql.="bairro ='" . $obj->get_street() . "', rua =" . $obj->get_number();
-			return parent::update($Sql);
-		}*/
+		public function inserirCategoriaProduto($obj){
+			if ($obj->ID > 0) {
+				$Sql="update categoria_produto set descricao ='" . $obj->Descricao() . "', tipo =" . $obj->Tipo() . " where id = " . $obj->ID;
+				return parent::update($Sql);
+			}else{
+				$Sql="INSERT INTO categoria_produto (descricao, tipo) VALUES ()";
+				return parent::insert($Sql);
+			}
+		}
 
 		//A função buscarTodos será nesse estilo
 		/*public function buscarTodos(){
