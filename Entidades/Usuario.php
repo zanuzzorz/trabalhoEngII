@@ -29,6 +29,10 @@ class Usuario {
     $this->Email = $email;
   }
 
+    public function defineCgc_cpf ($Cgc_cpf) {
+    $this->Cgc_cpf = $Cgc_cpf;
+  }
+
   public function recebeNome () {
     return $this->Nome;
   }
@@ -46,7 +50,7 @@ class Usuario {
   }
 
   public function recebeCgcCpf () {
-    return $this->Cgc_Cpf;
+    return $this->Cgc_cpf;
   }
 
   public function recebeEmail () {

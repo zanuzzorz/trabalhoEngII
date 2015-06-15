@@ -3,10 +3,24 @@
 	class ConexaoUsuario extends ConexaoBase {
 
 		//A função inserir será nesse estilo
-		/*public function inserirUsuario($obj){
-			$Sql="INSERT INTO usuario () VALUES ()";
+		public function inserirUsuario($usuario){
+
+
+			$id = NULL;
+			$status = NULL;
+			$tipo = $usuario -> Tipo;
+			$nome = $usuario -> recebeNome();
+			$cpf =  $usuario -> recebeCgcCpf();
+			$email = $usuario -> recebeEmail();
+			$login =  $usuario -> recebeUsuario();
+			$senha =  "";
+			$endereco =  NULL;
+			$saldo =  $usuario -> recebeSaldo();
+
+			// Será preciso alterar o Status e endereço, agora esta fixo na query
+			$Sql="INSERT INTO usuario () VALUES ('NULL','$nome','$login','$senha','NULL','$saldo','$cpf','$email','$tipo','1')";
 			return parent::insert($Sql);
-		}*/
+		}
 
 		//A função atualizar será nesse estilo
 		/*public function atualizarUsuario($obj){

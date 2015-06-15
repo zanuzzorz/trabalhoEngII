@@ -40,42 +40,55 @@
 
 
 			<div class="div-Cadastro col-xs-12 col-sm-12 col-md-12 col-lg-12" align="left">
-				<form>
+				<form action= "novoUsuario.php" method="post">
 					<div class="form-group">
-					    <label for="exampleInputNome">Nome</label>
-					    <input type="text" class="form-control" id="exampleInputNome" placeholder="Digite seu login">
+					    <label for="nome">Nome</label>
+					    <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu login">
 					</div>
 					<div class="form-group">
-					    <label for="exampleInputEmail">Email</label>
-					    <input type="email" class="form-control" id="exampleInputEmail" placeholder="Digite seu Email">
+					    <label for="email">Email</label>
+					    <input type="email" class="form-control" name="email" id="email" placeholder="Digite seu Email">
 					</div>
 			  		<div class="form-group">
-					    <label for="exampleInputEmail1">Login</label>
-					    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Digite seu login">
+					    <label for="login">Login</label>
+					    <input type="text" class="form-control"  name="login" id="login" id="login" placeholder="Digite seu login">
 					</div>
 					<div class="form-group">
-					    <label for="exampleInputPassword1">Senha</label>
-					    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Digite sua Senha">
+					    <label for="senha">Senha</label>
+					    <input type="password" class="form-control"  name="senha" id="senha" placeholder="Digite sua Senha">
 					</div>
 					<div class="form-group">
-					    <label for="exampleInputCpf">CPF</label>
-					    <input type="text" class="form-control" id="exampleInputCpf" placeholder="Digite seu CPF">
+					    <label for="repsenha">Confirmar Senha</label>
+					    <input type="password" class="form-control"  name="repsenha" id="repsenha" placeholder="Digite novamente sua Senha">
 					</div>
 					<div class="form-group">
-					    <label for="exampleInputEnd">Endereço</label>
-					    <input type="text" class="form-control" id="exampleInputEnd" placeholder="Digite seu Endereço">
+					    <label for="cpf">CPF/CNPJ</label>
+					    <input type="text" class="form-control"  name="cpf" id="cpf" placeholder="Digite seu CPF">
+					</div>
+					<div class="form-group">
+					    <label for="endereco">Endereço</label>
+					    <input type="text" class="form-control"  name="endereco" id="endereco" placeholder="Digite seu Endereço">
+					</div>
+					<div class="form-group">
+					    <label for="endereco">Saldo</label>
+					    <input type="text" class="form-control"  name="saldo" id="saldo" placeholder="Digite o saldo">
+					</div>
+					<div class="form-group">
+						<label>Tipo de Usuário</label>
+						<select name="tipo" id="tipo" class="form-control">
+						    <option value="1">Usuário</option>
+						    <option value="2">Mesa</option>
+						</select>
 					</div>
 					
 					
 
 					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" align="left">
 						<a href="administrador.html" class="btn btn-info"><span>Voltar</span></a>
-
 					</div>
 
 					<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" align="right">
-						<button type="submit" class="btn btn-success">Cadastrar</button>
-
+						<button type="submit" class="btn btn-success" id="cadastrarUsuario">Cadastrar</button>
 					</div>
 				</form>
 			</div>
