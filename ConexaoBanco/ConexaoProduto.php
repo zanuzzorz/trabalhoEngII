@@ -1,12 +1,18 @@
 <?php
 
 	class ConexaoProduto extends ConexaoBase {
+		public function inserirProduto($produto){
+                                    $preco           = $produto->Preco;
+                                    $situacao       = $produto->Situacao;
+                                    $ingredientes = $produto->Ingredientes ;
+                                    $descricao     = $produto->Descricao;
+                                    $categoria      = $produto->Categoria;
 
-		//A função inserir será nesse estilo
-		/*public function inserirProduto($obj){
-			$Sql="INSERT INTO produto () VALUES ()";
+                                    // Alterar o 1, é da categoria, FK.
+                                    // ID = NULL
+			$Sql                = "INSERT INTO `produto`  VALUES ('NULL', '$preco', '$situacao', '$ingredientes', '$descricao', '1')";
 			return parent::insert($Sql);
-		}*/
+		}
 
 		//A função atualizar será nesse estilo
 		/*public function atualizarProduto($obj){
@@ -34,5 +40,5 @@
 			return $Endereco;
 		}*/
 
-	} 
+	}
 ?>
