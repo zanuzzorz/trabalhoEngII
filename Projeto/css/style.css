@@ -31,7 +31,7 @@ body {
 	padding-top: 20px;
 }
 
-.owl-carousel .item img {
+.div_InicioGaleria img {
 	height: 200px;
 	padding: 10px;
 	display: block;
@@ -39,6 +39,9 @@ body {
 }
 #owl_Produtos .owl-pagination {
 	display: none;
+}
+#owl_Ingredientes .owl-pagination {
+	display: block !important;
 }
 .customNavigation .next {
 	position: absolute ;

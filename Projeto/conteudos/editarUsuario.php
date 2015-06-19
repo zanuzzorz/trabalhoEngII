@@ -40,7 +40,7 @@
 			<?php
 				if(isset($_GET['cadastro'])){
 					if($_GET['cadastro']==1){
-						echo "<div class='col-md-offset-3 col-offset-lg-3 col-md-6 col-lg-6 alert alert-success' align='center'><strong>Atenção!</strong> Cadastro Realizado com Sucesso!</div>";
+						echo "<div class='col-md-offset-3 col-offset-lg-3 col-md-6 col-lg-6 alert alert-success' align='center'><strong>Atenção!</strong> Cadastro Aletrado com Sucesso!</div>";
 					}else if($_GET['cadastro']==2){
 						echo "<div class='col-md-offset-3 col-offset-lg-3 col-md-6 col-lg-6 alert alert-warning' align='center'><strong>Atenção!</strong> Erro !</div>";
 					}
@@ -51,53 +51,77 @@
 				<h4>Cadastro de Usuário</h4>
 			</div>
 
-			
+			<?php
+			    require("../../ConexaoBanco/ConexaoBase.php");
+			    require("../../ConexaoBanco/ConexaoUsuario.php");
+			    require("../../Entidades/Usuario.php");
+
+			    $banco = new ConexaoBase();
+				$conexao = $banco -> abrirConexao();
+
+			    $ConexaoUsuario = new ConexaoUsuario();
+
+			    $usuario=$ConexaoUsuario->buscarPorUsuario($_SESSION['usuario']);
+
+    		?>
 
 			<div class="div-Cadastro col-xs-12 col-sm-12 col-md-12 col-lg-12" align="left">
-				<form action= "novoUsuario.php" method="post">
+				<form action= "updateUsuario.php" method="post">
 					<div class="form-group">
 					    <label for="nome">Nome</label>
-					    <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu login" value="<?php ?>">
+					    <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu login" value="<?php if($usuario) { echo $usuario[0]; }?>">
 					</div>
 					<div class="form-group">
 					    <label for="email">Email</label>
-					    <input type="email" class="form-control" name="email" id="email" placeholder="Digite seu Email">
+					    <input type="email" class="form-control" name="email" id="email" placeholder="Digite seu Email" value="<?php if($usuario) { echo $usuario[1]; }?>">
 					</div>
 			  		<div class="form-group">
 					    <label for="login">Login</label>
-					    <input type="text" class="form-control"  name="login" id="login" id="login" placeholder="Digite seu login">
+					    <input type="text" class="form-control"  name="login" id="login" id="login" placeholder="Digite seu login" value="<?php if($usuario) { echo $usuario[2]; }?>">
 					</div>
 					<div class="form-group">
 					    <label for="senha">Senha</label>
-					    <input type="password" class="form-control"  name="senha" id="senha" placeholder="Digite sua Senha">
+					    <input type="password" class="form-control"  name="senha" id="senha" placeholder="Digite sua Senha" value="<?php if($usuario) { echo $usuario[3]; }?>">
 					</div>
 					<div class="form-group">
 					    <label for="repsenha">Confirmar Senha</label>
-					    <input type="password" class="form-control"  name="repsenha" id="repsenha" placeholder="Digite novamente sua Senha">
+					    <input type="password" class="form-control"  name="repsenha" id="repsenha" placeholder="Digite novamente sua Senha" value="<?php if($usuario) { echo $usuario[3]; }?>">
 					</div>
 					<div class="form-group">
 					    <label for="endereco">Endereço</label>
-					    <input type="text" class="form-control"  name="endereco" id="endereco" placeholder="Digite seu Endereço">
+					    <input type="text" class="form-control"  name="endereco" id="endereco" placeholder="Digite seu Endereço" value="<?php if($usuario) { echo $usuario[4]; }?>">
 					</div>
 					<div class="form-group">
 					    <label for="cidade">Cidade</label>
-					    <input type="text" class="form-control"  name="cidade" id="cidade" placeholder="Digite sua Cidade">
+					    <input type="text" class="form-control"  name="cidade" id="cidade" placeholder="Digite sua Cidade" value="<?php if($usuario) { echo $usuario[5]; }?>">
 					</div>
 					<div class="form-group">
 						<label>UF</label>
 						<select name="uf" id="uf" class="form-control">
-						 	<option value="0">PR</option>
-						    <option value="1">SC</option>
-						    <option value="2">RS</option>
+						 <?php 
+						 	if($usuario[6]== 0){
+						 		echo "<option value='0'>PR</option>
+						 			  <option value='1'>SC</option>
+						 			  <option value='2'>RS</option>";
+						 	}else if($usuario[6]== 1){
+					 			echo "<option value='1'>SC</option>
+						 			  <option value='0'>PR</option>
+						 			  <option value='2'>RS</option>";
+						 	}else{
+						 		echo "<option value='2'>RS</option>
+						 			  <option value='0'>PR</option>
+						 			  <option value='1'>SC</option>";
+
+						 		} 
+						 ?>
 						</select>
 					</div>
-	
 					<?php
 			            if ($_SESSION['tipo'] == 0) { //administrador
 			                echo "
 			                	<div class='form-group'>
 								    <label for='cpf'>CPF/CNPJ</label>
-								    <input type='text' class='form-control'  name='cpf' id='cpf' placeholder='Digite seu CPF'>
+								    <input type='text' class='form-control'  name='cpf' id='cpf' placeholder='Digite seu CPF'  value='".$usuario[7]."'>
 								</div>
 								<div class='form-group'>
 									<label>Tipo de Usuário</label>
@@ -110,13 +134,13 @@
 			                echo "  	
 			                		<div class='form-group'>
 								    	<label for='cpf'>CNPJ</label>
-								    	<input type='text' class='form-control'  name='cpf' id='cpf' placeholder='Digite seu CNPJ'>
+								    	<input type='text' class='form-control'  name='cpf' id='cpf' placeholder='Digite seu CNPJ'  value='".$usuario[7]."'>
 									</div>";
 			            }else{ //cliente
 			                echo "
 			                    <div class='form-group'>
 								    <label for='cpf'>CPF</label>
-								    <input type='text' class='form-control'  name='cpf' id='cpf' placeholder='Digite seu CPF'>
+								    <input type='text' class='form-control'  name='cpf' id='cpf' placeholder='Digite seu CPF' value='".$usuario[7]."'>
 								</div>";
 			            }
 
@@ -124,7 +148,7 @@
 								
 
 					<div class="div_BotaoVoltar col-xs-3 col-sm-3 col-md-3 col-lg-3" align="left">
-						<a href="administrador.php" class="btn btn-info"><span>Voltar</span></a>
+						<a href="cliente.php" class="btn btn-info"><span>Voltar</span></a>
 					</div>
 
 					<div class="div_BotaoAvancar col-xs-9 col-sm-9 col-md-9 col-lg-9" align="right">

@@ -56,23 +56,25 @@
 			</div>
 
 			<div class="div_InicioGaleria col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+			    	<img src="../imagens/produtos/x-salada/1.jpg" class="img-responsive">
+			    </div>
+			     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+			    	<img src="../imagens/produtos/x-salada/2.jpg" class="img-responsive">
+			    </div>
+			     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+			    	<img src="../imagens/produtos/x-salada/3.jpg" class="img-responsive">
+		    	</div>
+		    </div>
+
+
+			<div class="div_InicioProdutos col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
+
 
 				<div class="owl-carousel owl-theme" id="owl_Produtos">
-
 				    <div class="item">
 						<h2>PRODUTO X</h2>
-
-					    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-					    	<img src="../imagens/produtos/x-salada/1.jpg" class="img-responsive">
-					    </div>
-					     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-					    	<img src="../imagens/produtos/x-salada/2.jpg" class="img-responsive">
-					    </div>
-					     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-					    	<img src="../imagens/produtos/x-salada/3.jpg" class="img-responsive">
-					    </div>
-
-
+					    
 					  	<div class="owl-carousel" id="owl_Ingredientes">
 					     	<div class="item">
 					     		<h3>Ingrediente 1</h3>
@@ -94,16 +96,6 @@
 
 					    <div class="item">
 						<h2>PRODUTO Y</h2>
-
-					    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-					    	<img src="../imagens/produtos/x-salada/3.jpg" class="img-responsive">
-					    </div>
-					     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-					    	<img src="../imagens/produtos/x-salada/2.jpg" class="img-responsive">
-					    </div>
-					     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-					    	<img src="../imagens/produtos/x-salada/1.jpg" class="img-responsive">
-					    </div>
 
 
 					  	<div class="owl-carousel" id="owl_Ingredientes02">

@@ -16,6 +16,7 @@
             $_SESSION['usuario'] = $usuario[0];
             $_SESSION['tipo'] = $usuario[2];
 
+
             if ($usuario[2] == 0) { //administrador
                 echo "<meta http-equiv='refresh' content='0; url=administrador.php'>";
             }else if ($usuario[2] == 1) { //mesa
