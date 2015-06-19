@@ -157,7 +157,21 @@
 				</form>
 			</div>
 
+			<script type="text/javascript">
+				$( document ).ready(function() {
+					var password = document.getElementById("senha"), confirm_password = document.getElementById("repsenha");
+					function validatePassword(){
+					  if(password.value != confirm_password.value) {
+					    confirm_password.setCustomValidity("Senhas não Conferem");
+					  } else {
+					    confirm_password.setCustomValidity('');
+					  }
+					}
 
+					password.onchange = validatePassword;
+					confirm_password.onkeyup = validatePassword;
+				});
+			</script>
 			
 		</div>
 	</div>
