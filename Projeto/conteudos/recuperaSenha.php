@@ -46,7 +46,7 @@
 					    <input type="text" class="form-control" id="imputEmail" placeholder="Digite seu e-mail para recuperar a senha">
 					</div>
 					<div class="div_BotaoVoltar col-xs-3 col-sm-3 col-md-3 col-lg-3" align="left">
-						<a href="login.html" class="btn btn-info"><span>Voltar</span></a>
+						<a href="login.php" class="btn btn-info"><span>Voltar</span></a>
 					</div>
 
 					<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" align="right">

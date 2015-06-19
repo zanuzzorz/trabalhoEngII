@@ -160,7 +160,7 @@
             
             <div class="row">
                 <div class="div_BotaoVoltar col-xs-3 col-sm-3 col-md-3 col-lg-3" align="left">
-				    <a href="administrador.html" class="btn btn-info"><span>Voltar</span></a>
+				    <a href="administrador.php" class="btn btn-info"><span>Voltar</span></a>
 			     </div>
             </div>
 

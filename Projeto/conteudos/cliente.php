@@ -32,7 +32,7 @@
             <div class="row div_Administrador">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="row" >
-                        <a href="acompanharPedido.html" class="btn btn-maior btn-success"><span>ACOMPANHAR FINALIZAÇÃO DE PEDIDOS</span></a>
+                        <a href="acompanharPedido.php" class="btn btn-maior btn-success"><span>ACOMPANHAR FINALIZAÇÃO DE PEDIDOS</span></a>
                     </div>     
                 </div>
             </div>
@@ -41,7 +41,7 @@
             
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <div class="row" >
-                        <a href="inicio.html" class="btn btn-menor btn-primary"><span>Cardápio</span></a>
+                        <a href="inicio.php" class="btn btn-menor btn-primary"><span>Cardápio</span></a>
                     </div>
                 </div>
 

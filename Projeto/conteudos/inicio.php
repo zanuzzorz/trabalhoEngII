@@ -142,7 +142,7 @@
 					</form>
 				</div>
 				<div class="div-verPedido col-xs-4 col-sm-4 col-md-4 col-lg-4" align="right">
-					<a href="verPedido.html" class="btn btn-primary"><span>VER PEDIDO</span></a>
+					<a href="verPedido.php" class="btn btn-primary"><span>VER PEDIDO</span></a>
 				</div>
 				<div class="div-AddPedido col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
 					<a href="#" class="btn btn-lg btn-success"><span>ADICIONAR PEDIDO</span></a>

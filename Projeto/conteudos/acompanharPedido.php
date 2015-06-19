@@ -92,7 +92,7 @@
 	            
 	            <div class="row">
 	                <div class="div_BotaoVoltar col-xs-3 col-sm-3 col-md-3 col-lg-3" align="left">
-					    <a href="cliente.html" class="btn btn-info"><span>Voltar</span></a>
+					    <a href="cliente.php" class="btn btn-info"><span>Voltar</span></a>
 				     </div>
 	            </div>
 

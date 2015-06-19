@@ -84,11 +84,11 @@
 			</div>
 
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" align="left">
-				<a href="inicio.html" class="btn btn-info"><span>Voltar</span></a>
+				<a href="inicio.php" class="btn btn-info"><span>Voltar</span></a>
 			</div>
 
 			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" align="right">
-				<a href="inicio.html" class="btn btn-success"><span>Finalizar Pedido</span></a>
+				<a href="inicio.php" class="btn btn-success"><span>Finalizar Pedido</span></a>
 			</div>
 
 		</div>
