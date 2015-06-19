@@ -22,6 +22,13 @@
 			return parent::insert($Sql);
 		}
 
+		function buscarPorUsuarioESenha($usuario, $senha){
+			$sql="SELECT usuario,senha,tipo FROM usuario WHERE usuario='".$usuario."' and senha=".$senha."";
+			$data=parent::select($sql);
+			if($data) return mysql_fetch_array($data);
+			else return NULL;
+		}
+
 		//A função atualizar será nesse estilo
 		/*public function atualizarUsuario($obj){
 			$Sql="update usuario set numero ='" . $obj->get_name() . "', complemento ='" . $obj->get_phone() . "', estado ='" . $obj->get_email() . "',";
