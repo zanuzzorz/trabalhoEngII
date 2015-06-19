@@ -31,7 +31,7 @@
 						<?php
 							if(isset($_GET['error'])){
 								if($_GET['error']==1){
-									echo "<div class='alert alert-warning'><strong>Atenção!</strong> Usuário ou Senha incorretos!</div>";
+									echo "<div class='alert alert-danger'><strong>Atenção!</strong> Usuário ou Senha incorretos!</div>";
 								}else if($_GET['error']==2){
 									echo "<div class='alert alert-warning'><strong>Atenção!</strong> Sessão expirada!</div>";
 								}

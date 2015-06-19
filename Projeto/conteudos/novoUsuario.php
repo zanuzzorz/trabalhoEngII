@@ -14,11 +14,16 @@
 		$login =  $_POST['login'];
 		$senha =  $_POST['senha'];
 		$repsenha =  $_POST['repsenha'];
-		$endereco =  1; //$_POST['endereco'];
-		$saldo =  $_POST['saldo'];
+		$endereco =  $_POST['endereco'];
+		$cidade =  $_POST['cidade'];
+		$uf =  $_POST['uf'];
 
+		
 		$id = NULL;
-		$status = NULL;
+		$saldo =  0;
+		$status = 0;
+
+		
 		$tipo = $_POST['tipo'];
 
 		$usuario = new Usuario();
@@ -26,17 +31,22 @@
 
 		$usuario -> defineNome($nome);
 		$usuario -> defineUsuario($login);
+		$usuario -> defineSenha($senha);
 		$usuario -> defineSaldo($saldo);
 		$usuario -> defineEmail($email);
 		$usuario -> defineCgc_cpf($cpf);
-		$usuario -> Tipo = $tipo;
 
+		$usuario -> defineEndereco($endereco);
+		$usuario -> defineCidade($cidade);
+		$usuario -> defineUf($uf);
+
+		$usuario -> Tipo = $tipo;
 
 		$conexaoUsuario -> inserirUsuario($usuario);
 
-		
 		//$banco -> fecharConexao($conexao);
 	}
 
+        echo "<meta http-equiv='refresh' content='0; url=cadastroUsuario.php?cadastro=1'>";
 
  ?>

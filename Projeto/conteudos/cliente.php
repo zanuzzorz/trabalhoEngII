@@ -47,6 +47,12 @@
 
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <div class="row" >
+                        <a href="editarUsuario.php" class="btn btn-menor btn-primary"><span>Editar Conta</span></a>
+                    </div>       
+                </div>
+
+                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="row" >
                         <a href="" class="btn  btn-menor btn-primary"><span>Cancelar Pedido</span></a>
                     </div>       
                 </div>

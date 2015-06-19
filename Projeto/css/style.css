@@ -90,6 +90,9 @@ body {
 .div_BotaoVoltar {
 	padding-left: 0;
 }
+.div_BotaoAvancar {
+	padding-right: 0;
+}
 
 
 /* ------------------------------------------------------- */
@@ -97,7 +100,7 @@ body {
 .div_RecuperaSenha,
 .div_LoginTotal,
 .div_CadastroTotal {
-	padding-top: 30px;
+	padding: 30px 0;
 }
 .div-RecuperaSenha,
 .div-Login,

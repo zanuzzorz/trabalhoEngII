@@ -5,25 +5,33 @@
 		//A função inserir será nesse estilo
 		public function inserirUsuario($usuario){
 
-
 			$id = NULL;
-			$status = NULL;
+			$status = $usuario -> Status;
 			$tipo = $usuario -> Tipo;
 			$nome = $usuario -> recebeNome();
 			$cpf =  $usuario -> recebeCgcCpf();
 			$email = $usuario -> recebeEmail();
 			$login =  $usuario -> recebeUsuario();
-			$senha =  "";
-			$endereco =  NULL;
+			$senha =  $usuario -> recebeSenha();
 			$saldo =  $usuario -> recebeSaldo();
+			$endereco =  $usuario -> recebeEndereco();
+			$cidade =  $usuario -> recebeCidade();
+			$uf =  $usuario -> recebeUf();
 
-			// Será preciso alterar o Status e endereço, agora esta fixo na query
-			$Sql="INSERT INTO usuario () VALUES ('NULL','$nome','$login','$senha','NULL','$saldo','$cpf','$email','$tipo','1')";
+
+			$Sql="INSERT INTO usuario () VALUES ('NULL','$nome','$login','$senha','$status','$saldo','$cpf','$email','$tipo','$endereco','$cidade','$uf')";
 			return parent::insert($Sql);
 		}
 
 		function buscarPorUsuarioESenha($usuario, $senha){
-			$sql="SELECT usuario,senha,tipo FROM usuario WHERE usuario='".$usuario."' and senha=".$senha."";
+			$sql="SELECT nome,email,usuario,senha,endereco,cidade,uf,cpfcnpj FROM usuario WHERE usuario='".$usuario."' and senha=".$senha."";
+			$data=parent::select($sql);
+			if($data) return mysql_fetch_array($data);
+			else return NULL;
+		}
+
+		function buscarPorUsuario($usuario){
+			$sql="SELECT usuario,senha,tipo FROM usuario WHERE usuario='".$usuario."'";
 			$data=parent::select($sql);
 			if($data) return mysql_fetch_array($data);
 			else return NULL;

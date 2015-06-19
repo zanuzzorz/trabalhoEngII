@@ -49,14 +49,12 @@
                     </div>
                     
                     <div class="row" >
-                        <a href="cadastro.php" class="btn  btn-menor btn-primary"><span>Usuário</span></a>
+                        <a href="cadastroUsuario.php" class="btn  btn-menor btn-primary"><span>Usuário</span></a>
                     </div>       
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                    <div class="row" >
-                        <a href="cadastroMesa.php" class="btn btn-menor btn-primary"><span>Mesa</span></a>
-                    </div>
+
                     <div class="row" >
                         <a href="insereCredito.php" class="btn btn-menor btn-primary"><span>Adicionar Crédito</span></a>
                     </div>       

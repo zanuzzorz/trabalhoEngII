@@ -12,6 +12,9 @@ class Usuario {
   private $Saldo;
   private $Cgc_cpf;
   private $Email;
+  private $Endereco;
+  private $Cidade;
+  private $Uf;
 
   public function defineNome ($nome) {
     $this->Nome = $nome;
@@ -19,6 +22,10 @@ class Usuario {
   
   public function defineUsuario ($usuario) {
     $this->Usuario = $usuario;
+  }
+
+  public function defineSenha ($senha) {
+    $this->Senha = $senha;
   }
 
   public function defineSaldo ($saldo) {
@@ -29,8 +36,20 @@ class Usuario {
     $this->Email = $email;
   }
 
-    public function defineCgc_cpf ($Cgc_cpf) {
+  public function defineCgc_cpf ($Cgc_cpf) {
     $this->Cgc_cpf = $Cgc_cpf;
+  }
+
+  public function defineEndereco ($Endereco) {
+    $this->Endereco = $Endereco;
+  }
+
+  public function defineCidade ($Cidade) {
+    $this->Cidade = $Cidade;
+  }
+
+  public function defineUf ($Uf) {
+    $this->Uf = $Uf;
   }
 
   public function recebeNome () {
@@ -55,6 +74,18 @@ class Usuario {
 
   public function recebeEmail () {
     return $this->Email;
+  }
+
+  public function recebeEndereco () {
+    return $this->Endereco;
+  }
+
+  public function recebeCidade () {
+    return $this->Cidade;
+  }
+
+  public function recebeUf () {
+    return $this->Uf;
   }
 }
 
