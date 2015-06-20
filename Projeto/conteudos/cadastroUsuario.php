@@ -101,8 +101,8 @@
 								<div class='form-group'>
 									<label>Tipo de Usuário</label>
 									<select name='tipo' id='tipo' class='form-control'>
-									    <option value='1'>Usuário</option>
-									    <option value='2'>Mesa</option>
+									    <option value='1'>Mesa</option>
+									    <option value='2'>Cliente</option>
 									</select>
 								</div>";
 			            }else if ($_SESSION['tipo'] == 1) { //mesa
