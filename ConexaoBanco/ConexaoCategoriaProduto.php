@@ -8,7 +8,7 @@
 				$Sql="update categoria_produto set descricao ='" . $obj->Descricao() . "', tipo =" . $obj->Tipo() . " where id = " . $obj->ID;
 				return parent::update($Sql);
 			}else{
-				$Sql="INSERT INTO categoria_produto (descricao, tipo) VALUES ()";
+				$Sql="INSERT INTO categoria_produto (descricao, tipo) VALUES ('$obj->Descricao', $obj->Tipo)";
 				return parent::insert($Sql);
 			}
 		}
