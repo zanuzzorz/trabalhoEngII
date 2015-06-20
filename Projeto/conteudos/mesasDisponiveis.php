@@ -1,9 +1,30 @@
 <?php
-	require 'session.php';
+  require("../../ConexaoBanco/ConexaoBase.php");
+  $banco = new ConexaoBase();
+  $conexao = $banco->abrirConexao();
+  $sql = "SELECT nome,status FROM usuario WHERE tipo='1' ORDER BY nome";
+  $resposta = $banco->select($sql);
+  $num_registros = mysql_num_rows($resposta);
+  $mesaCss = NULL;
+  $nomes = NULL;
+  $i = 0;
+  while ($linha = mysql_fetch_assoc($resposta)) {
+		switch($linha['status']){
+			case 0: $mesaCss[$i] = "p_Mesa p_Mesa1";
+					break;
+			case 1: $mesaCss[$i] = "p_Mesa p_Mesa0";
+					break;
+			case 2: $mesaCss[$i] = "p_Mesa p_Mesa2";
+					break;	
+		}
+		$nomes[$i] = $linha['nome'];
+		$i++;
+  }
 ?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,82 +66,35 @@
 			<div class="row" align="center">
                 <h2 class="h2_Titulo">Mesas Disponíveis</h2>
             </div>
+		<?php
+			$linhas = (int)($num_registros/4) + 1;
+			$i = 0;
+			for ($k = 0; $k < $linhas; $k++) {
+				$cont = 0;
+				$j = 0;
+				while(($cont < 4)) {
+					
+					if($j == 0) echo '<div class="div_MesasDisp col-xs-12 col-sm-12 col-md-12 col-lg-12">';
+					if ($i>= $num_registros) {
+						echo '<div class="div_Mesas col-xs-12 col-sm-12 col-md-3 col-lg-3" align="center">';
+						echo '</div>';
+					} else {
+						echo '<div class="div_Mesas col-xs-12 col-sm-12 col-md-3 col-lg-3" align="center">';
+						echo '<p class="', $mesaCss[$i] , '"><br><b>',$nomes[$i], '</b></br></p>';
+						echo '</div>';
+					}
+					if($cont == 3) echo '</div>';
+					$cont++;
+					$i++;
+					$j = 1;
+				}
+			}
+		?>
 
-			<div class="div_MesasDisp col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<div class="div_Mesas col-xs-12 col-sm-12 col-md-3 col-lg-3" align="center">
-					<p class="p_Mesa p_Mesa0">Mesa <br>01</p>
-            	</div>
-
-            	<div class="div_Mesas col-xs-12 col-sm-12 col-md-3 col-lg-3" align="center">
-					<p class="p_Mesa p_Mesa1">Mesa <br>02</p>
-            	</div>
-
-            	<div class="div_Mesas col-xs-12 col-sm-12 col-md-3 col-lg-3" align="center">
-					<p class="p_Mesa p_Mesa1">Mesa <br>03</p>
-            	</div>
-
-            	<div class="div_Mesas col-xs-12 col-sm-12 col-md-3 col-lg-3" align="center">
-					<p class="p_Mesa p_Mesa1">Mesa <br>04</p>
-            	</div>
-            </div>
-
-            <div class="div_MesasDisp col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<div class="div_Mesas col-xs-12 col-sm-12 col-md-3 col-lg-3" align="center">
-					<p class="p_Mesa p_Mesa2">Mesa <br>05</p>
-            	</div>
-
-            	<div class="div_Mesas col-xs-12 col-sm-12 col-md-3 col-lg-3" align="center">
-					<p class="p_Mesa p_Mesa2">Mesa <br>06</p>
-            	</div>
-
-            	<div class="div_Mesas col-xs-12 col-sm-12 col-md-3 col-lg-3" align="center">
-					<p class="p_Mesa p_Mesa0">Mesa <br>07</p>
-            	</div>
-
-            	<div class="div_Mesas col-xs-12 col-sm-12 col-md-3 col-lg-3" align="center">
-					<p class="p_Mesa p_Mesa1">Mesa <br>08</p>
-            	</div>
-            </div>
-
-            <div class="div_MesasDisp col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<div class="div_Mesas col-xs-12 col-sm-12 col-md-3 col-lg-3" align="center">
-					<p class="p_Mesa p_Mesa1">Mesa <br>09</p>
-            	</div>
-
-            	<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3" align="center">
-					<p class="div_Mesas p_Mesa p_Mesa1">Mesa <br>10</p>
-            	</div>
-
-            	<div class="div_Mesas col-xs-12 col-sm-12 col-md-3 col-lg-3" align="center">
-					<p class="p_Mesa p_Mesa0">Mesa <br>11</p>
-            	</div>
-
-            	<div class="div_Mesas col-xs-12 col-sm-12 col-md-3 col-lg-3" align="center">
-					<p class="p_Mesa p_Mesa0">Mesa <br>12</p>
-            	</div>
-            </div>
-
-            <div class="div_MesasDisp col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<div class="div_Mesas col-xs-12 col-sm-12 col-md-3 col-lg-3" align="center">
-					<p class="p_Mesa p_Mesa0">Mesa <br>13</p>
-            	</div>
-
-            	<div class="div_Mesas col-xs-12 col-sm-12 col-md-3 col-lg-3" align="center">
-					<p class="p_Mesa p_Mesa0">Mesa <br>14</p>
-            	</div>
-
-            	<div class="div_Mesas col-xs-12 col-sm-12 col-md-3 col-lg-3" align="center">
-					<p class="p_Mesa p_Mesa1">Mesa <br>15</p>
-            	</div>
-
-            	<div class="div_Mesas col-xs-12 col-sm-12 col-md-3 col-lg-3" align="center">
-					<p class="p_Mesa p_Mesa2">Mesa <br>16</p>
-            	</div>
-            </div>
-
+			 
              <div class="row">
 	            <div class="div_BotaoVoltar col-xs-3 col-sm-6 col-md-6 col-lg-6" align="right">
-				    <a href="administrador.php" class="btn btn-lg btn-primary"><span>Voltar</span></a>
+				    <a href="administrador.html" class="btn btn-lg btn-primary"><span>Voltar</span></a>
 			    </div>
 
 			    <div class="col-xs-9 col-sm-9 col-md-6 col-lg-6" align="left">
