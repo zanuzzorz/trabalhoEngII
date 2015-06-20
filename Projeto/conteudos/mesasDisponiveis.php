@@ -73,7 +73,6 @@
 				$cont = 0;
 				$j = 0;
 				while(($cont < 4)) {
-					
 					if($j == 0) echo '<div class="div_MesasDisp col-xs-12 col-sm-12 col-md-12 col-lg-12">';
 					if ($i>= $num_registros) {
 						echo '<div class="div_Mesas col-xs-12 col-sm-12 col-md-3 col-lg-3" align="center">';
@@ -94,7 +93,7 @@
 			 
              <div class="row">
 	            <div class="div_BotaoVoltar col-xs-3 col-sm-6 col-md-6 col-lg-6" align="right">
-				    <a href="administrador.html" class="btn btn-lg btn-primary"><span>Voltar</span></a>
+				    <a href="cliente.php" class="btn btn-lg btn-primary"><span>Voltar</span></a>
 			    </div>
 
 			    <div class="col-xs-9 col-sm-9 col-md-6 col-lg-6" align="left">
