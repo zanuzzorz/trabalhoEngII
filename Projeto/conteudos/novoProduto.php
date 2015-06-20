@@ -7,8 +7,8 @@
     $conexao        = $banco->abrirConexao();
     $conexaoProduto = new ConexaoProduto();
 
-    if ( $_POST['nomeProduto']   != ""  ||  $_POST['precoProduto' ]  != ""  ||
-         $_POST['ingredientes']  != ""  || $_POST['subcategoria'  ]  != "" ) {
+    if ( $_POST['nomeProduto']   != ""  && $_POST['precoProduto' ]  != ""  ||
+         $_POST['ingredientes']  != ""  && $_POST['subcategoria' ]  != "" ) {
 
         $descricao     = $_POST['nomeProduto'];
         $preco         = $_POST['precoProduto'];
@@ -24,8 +24,11 @@
         $produto->Descricao     = $descricao;
         $produto->Categoria     = $subcategoria;
 
-        $conexaoProduto->inserirProduto($produto);
+        $retorno = $conexaoProduto->inserirProduto($produto);
 
         //$banco->fecharConexao($conexao);
+        echo "<meta http-equiv='refresh' content='0; url=cadastroProduto.php?cadastro=1'>";
+    }else{
+        echo "<meta http-equiv='refresh' content='0; url=cadastroProduto.php?cadastro=2'>";
     }
 ?>

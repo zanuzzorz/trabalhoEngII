@@ -14,7 +14,7 @@
     <!-- jQuery -->
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    
+
     <!-- CSS -->
     <link href="../css/style.css" rel="stylesheet">
     <link href="../css/animate.css" rel="stylesheet">
@@ -33,35 +33,38 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="row" >
                         <a href="verPedidoAdmin.php" class="btn btn-maior btn-success"><span>ACOMPANHAR PEDIDOS</span></a>
-                    </div>     
+                    </div>
                 </div>
             </div>
 
             <div class="row" align="center">
                 <h2>Cadastros</h2>
             </div>
-            
+
             <div class="row div_Administrador_botoes">
-            
+
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <div class="row" >
                         <a href="cadastroProduto.php" class="btn btn-menor btn-primary"><span>Produtos</span></a>
                     </div>
-                    
+
                     <div class="row" >
-                        <a href="cadastroUsuario.php" class="btn  btn-menor btn-primary"><span>Usuário</span></a>
-                    </div>       
+                        <a href="cadastroCategoria.php" class="btn  btn-menor btn-primary"><span>Categoria</span></a>
+                    </div>
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="row" >
+                        <a href="cadastroUsuario.php" class="btn  btn-menor btn-primary"><span>Usuário</span></a>
+                    </div>
 
                     <div class="row" >
                         <a href="insereCredito.php" class="btn btn-menor btn-primary"><span>Adicionar Crédito</span></a>
-                    </div>       
+                    </div>
                 </div>
-                
+
             </div>
-        
+
     </div>
 
 </body>

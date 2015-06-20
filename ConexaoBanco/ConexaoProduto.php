@@ -1,15 +1,13 @@
 <?php
    class ConexaoProduto extends ConexaoBase {
 	public function inserirProduto($produto){
-            $preco        = $produto->Preco;
-            $situacao     = $produto->Situacao;
-            $ingredientes = $produto->Ingredientes ;
-            $descricao    = $produto->Descricao;
-            $categoria    = $produto->Categoria;
+      $preco        = $produto->Preco;
+      $situacao     = $produto->Situacao;
+      $ingredientes = $produto->Ingredientes ;
+      $descricao    = $produto->Descricao;
+      $categoria    = $produto->Categoria;
 
-            // Alterar o 1, é da categoria, FK.
-            // ID = NULL
-      	    $Sql          = "INSERT INTO `produto`  VALUES ('NULL', '$preco', '$situacao', '$ingredientes', '$descricao', '1')";
+	    $Sql          = "INSERT INTO `produto`  VALUES ('NULL', '$preco', '$situacao', '$ingredientes', '$descricao', '$categoria')";
 	    return parent::insert($Sql);
    	}
 
