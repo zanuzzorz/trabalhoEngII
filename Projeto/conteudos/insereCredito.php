@@ -37,44 +37,67 @@
 <body>
 	<div class="container">
 		<div class="div_CadastroTotal col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<?php
+				if(isset($_GET['cadastro'])){
+					if($_GET['cadastro']==1){
+						echo "<div class='col-md-offset-3 col-offset-lg-3 col-md-6 col-lg-6 alert alert-success' align='center'><strong>Confirmado!</strong> Saldo atualizado com sucesso!</div>";
+					}else if($_GET['cadastro']==2){
+						echo "<div class='col-md-offset-3 col-offset-lg-3 col-md-6 col-lg-6 alert alert-warning' align='center'><strong>Atenção!</strong> Erro !</div>";
+					}
+				}
+			?>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
 				<h4>Inserção de crédito</h4>
 			</div>
 			<div class="div-Cadastro col-xs-12 col-sm-12 col-md-12 col-lg-12" align="left">
-				<form>
+				<form action="updateSaldo.php" method="post">
 					<div class="form-group">
-					    <div class="form-group">
-						    <div class="input-group">
-					    		<input type="text" class="form-control" id="exampleInputBusca" placeholder="Busca cliente...">
-						      	<span class="input-group-btn">
-						        	<button class="btn btn-default glyphicon glyphicon-search" type="button"></button>
-						      	</span>
-						    </div>
-						</div>
+					    <select required name="" id="usuario" class="form-control">
+					    	<option value="">Selecione um Usuário</option>
+					    	<?php
+
+                   				require("../../ConexaoBanco/ConexaoBase.php");
+                    			require("../../ConexaoBanco/ConexaoUsuario.php");
+                    			require("../../Entidades/Usuario.php");
+                    			$ConexaoUsuario = new ConexaoUsuario();
+
+                               	$result=$ConexaoUsuario->buscarUsuarios();
+                    		                    	
+			                    while ($usuario = mysql_fetch_array($result)){
+			                    	$str = "0[".$usuario[0]."]0".
+			                    		   "1[".$usuario[1]."]1".
+			                    		   "6[".$usuario[6]."]6".
+			                    		   "5[".$usuario[5]."]5";
+        	                		echo "<option value=".$str.">" . $usuario[1] . "</option>";
+                    			}
+
+                    		?>
+						</select>
 					</div>
 
 					<br \><br \>
 
 					<div class="form-group">
-					    <label for="exampleInputNome">Nome</label>
-					    <input type="text" class="form-control" id="exampleInputNome" placeholder="" min="0" text="lucas">
+					    <label for="InputNome">Nome</label>
+					    <input type="hidden" class="form-control" id="InputID" name="InputID" placeholder="" min="0" readonly="readonly">
+					    <input type="text" class="form-control" id="InputNome" name="InputNome" placeholder="" min="0" readonly="readonly">
 					</div>
 
 			  		<div class="form-group">
-					    <label for="exampleInputCPF">CPF</label>
-					    <input type="text" class="form-control" id="exampleInputCPF" placeholder="">
+					    <label for="InputCPF">CPF</label>
+					    <input type="text" class="form-control" id="InputCPF" name="InputCPF" placeholder="" readonly="readonly" required="required">
 					</div>
 
 					<div class="form-group">
-					    <label for="exampleInputSaldo">Saldo</label>
-					    <input type="text" class="form-control" id="exampleInputSaldo" placeholder="">
+					    <label for="InputSaldo">Saldo</label>
+					    <input type="text" class="form-control" id="InputSaldo" name="InputSaldo" placeholder="" readonly="readonly">
 					</div>
 
 					<br \><br \>
 
 					<div class="form-group">
-					    <label for="exampleInputInserir">Valor a Inserir:</label>
-					    <input type="text" class="form-control" id="exampleInputInserir" placeholder="">
+					    <label for="InputInserir">Valor a Inserir:</label>
+					    <input type="text" class="form-control" id="InputInserir" name="InputInserir" placeholder="0.00">
 					</div>
 
 					<br \>
@@ -90,6 +113,27 @@
 			</div>	
 		</div>
 	</div>
+
+<script type="text/javascript">
+	$( "#usuario" ).change(function() {
+		var str = $( "#usuario option:selected" ).val();
+
+		var ID = str.substring(str.indexOf("0[")+2, str.indexOf("]0"))
+		var nome = str.substring(str.indexOf("1[")+2, str.indexOf("]1"))
+		var cpfcnpj = str.substring(str.indexOf("6[")+2, str.indexOf("]6"))
+		var saldo = str.substring(str.indexOf("5[")+2, str.indexOf("]5"))
+
+
+		
+		$("#InputID").val( ID );
+		$("#InputNome").val( nome );
+		$("#InputCPF").val( cpfcnpj );
+		$("#InputSaldo").val( saldo );
+
+	});
+</script>
+
+	<script src="../bootstrap/js/bootstrap.min.js"></script>
 	
 </body>
 </html>

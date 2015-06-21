@@ -3,10 +3,10 @@
 	class ConexaoHistoricoSaldo extends ConexaoBase {
 
 		//A função inserir será nesse estilo
-		/*public function inserirHistorico($obj){
-			$Sql="INSERT INTO historico_saldo () VALUES ()";
+		public function inserirHistorico($dtInsercao, $tipo, $valor, $id){
+			$Sql="INSERT INTO historico_saldo (data, tipo, valor, idusuario) VALUES ('$dtInsercao', '$tipo', $valor, $id)";
 			return parent::insert($Sql);
-		}*/
+		}
 
 		//A função atualizar será nesse estilo
 		/*public function atualizarHistorico($obj){

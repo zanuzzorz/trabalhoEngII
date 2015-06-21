@@ -42,25 +42,7 @@
 			return parent::update($sql);
 		}
 
-		//A função buscarTodos será nesse estilo
-		/*public function buscarTodos(){
-			$Sql="SELECT * FROM usuario";
-			$Resultado = parent::select($Sql);
-			$Endereco = NULL;
-			$i = 0;
-			while ($linha = mysql_fetch_assoc($Resultado)) {
-				$Endereco[$i] = new \Entidades\Endereco();
-				$Endereco[$i]->set_isfree($linha["id"]);
-				$Endereco[$i]->set_code($linha["numero"]);
-				$Endereco[$i]->set_capacity($linha["complemento"]);
-				$Endereco[$i]->set_isfree($linha["estado"]);
-				$Endereco[$i]->set_isfree($linha["bairro"]);
-				$Endereco[$i]->set_isfree($linha["rua"]);
-				$i++;
-			}
-			return $Endereco;
-		}*/
-
+		
 		//Buscar por nome e Senha, retorna usuario, senha e tipo
 		function buscarPorUsuarioESenha($usuario, $senha){
 			$sql="SELECT usuario,senha,tipo FROM usuario WHERE usuario='".$usuario."' and senha=".$senha."";
@@ -85,6 +67,32 @@
 			else return NULL;
 		}
 
+		//A função buscarTodos será nesse estilo
+		public function buscarUsuarios(){
+      		$Sql = "SELECT * FROM usuario WHERE usuario.tipo = 2";
+      		$Resultado = parent::select($Sql);
+			return $Resultado;
+		}
 
+		//A função buscarTodos será nesse estilo
+		public function buscarTodos(){
+      		$Sql = "SELECT * FROM usuario";
+      		$Resultado = parent::select($Sql);
+			return $Resultado;
+		}
+
+		//A função buscarTodos será nesse estilo
+		public function buscarPorID($id){
+      		$Sql = "SELECT * FROM usuario WHERE id =".$id."";
+      		$Resultado = parent::select($Sql);
+			return $Resultado;
+		}
+
+		//Busca Usuario por CPF
+		public function atualizaSaldoPorCPF($cpf, $saldo){
+      		$sql="UPDATE usuario set saldo = " .$saldo. "+". "saldo WHERE usuario.cpfcnpj = ". $cpf. "";
+      		$Resultado = parent::select($sql);
+			return $Resultado;
+		}
 	} 
 ?>
