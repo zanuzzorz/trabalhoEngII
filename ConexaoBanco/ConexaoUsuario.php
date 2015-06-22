@@ -45,7 +45,7 @@
 		
 		//Buscar por nome e Senha, retorna usuario, senha e tipo
 		function buscarPorUsuarioESenha($usuario, $senha){
-			$sql="SELECT usuario,senha,tipo FROM usuario WHERE usuario='".$usuario."' and senha=".$senha."";
+			$sql="SELECT usuario,senha,tipo FROM usuario WHERE usuario='".$usuario."' and senha='".$senha."'";
 			$data=parent::select($sql);
 			if($data) return mysql_fetch_array($data);
 			else return NULL;
