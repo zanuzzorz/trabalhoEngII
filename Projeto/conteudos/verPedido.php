@@ -1,5 +1,7 @@
 <?php
 	require 'session.php';
+	require("../../ConexaoBanco/ConexaoBase.php");
+	require("../../ConexaoBanco/ConexaoUsuario.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -35,6 +37,23 @@
 	<title>Garçom Online</title>
 </head>
 <body>
+	<?php
+		$banco = new ConexaoBase();
+		$conexao = $banco -> abrirConexao();
+		$ConexaoUsuario = new ConexaoUsuario();
+		$usuario=$ConexaoUsuario->buscarUsuarioID($_SESSION['usuario']);
+
+		$query = "SELECT pr.descricao, ip.quantidade, pr.preco, p.status FROM pedido p INNER JOIN item_pedido ip ON
+		p.id = ip.idpedido INNER JOIN comanda c ON c.id = p.idcomanda INNER JOIN produto pr ON pr.id = ip.idproduto WHERE " .  $usuario[1] .
+		" AND p.status in (1,2,3) group by pr.preco";
+
+        $result = $banco -> select($query);
+        $result2 = $banco -> select($query);
+
+        if (mysql_num_rows($result) == 0) {
+            echo"<script>alert('Carrinho Vazio!!');</script>";            
+        }
+  	?>
 	<div class="container">
 		<div class="div_VerPedidosTotal col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
@@ -43,6 +62,30 @@
 			</div>
 
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
+				<br />
+				
+				<table id="table_Status" class="table ">
+					<tr class="success">
+						<td><strong>STATUS</strong></td>
+						<td><strong>
+						<?php
+							$status = mysql_fetch_assoc($result2);
+							if ($status['status'] == 1) {
+								echo "AGUARDANDO...";
+							}
+							else if ($status['status'] == 2) {
+								echo "EM PREPARO...";
+							}
+							else if ($status['status'] == 3) {
+								echo "SENDO ENTREGUE...";
+							}
+						?>
+						</strong></td>
+					</tr>
+				</table>
+				
+					
+				</table>
 				<table class="table table-striped">
 			      <thead>
 			        <tr class="success">
@@ -53,30 +96,23 @@
 			        </tr>
 			      </thead>
 			      <tbody>
-			        <tr>
-			          <td>Produto 01</td>
-			          <td>02</td>
-			          <td>R$ 10,00</td>
-			          <td> <span class="glyphicon glyphicon-minus"></span> </td>
-			        </tr>
-			        <tr class="success">
-			          <td>Produto 02</td>
-			          <td>03</td>
-			          <td>R$ 5,00</td>
-			          <td> <span class="glyphicon glyphicon-minus"></span> </td>
-			        </tr>
-			        <tr>
-			          <td>Produto 03</td>
-			          <td>01</td>
-			          <td>R$ 3,00</td>
-			          <td> <span class="glyphicon glyphicon-minus"></span> </td>
-			        </tr>
+			      	<?php
+			      		$valortotal = 0;
+			      		while ($linha = mysql_fetch_assoc($result)) {
+							echo "<tr><td> " . $linha['descricao'] ."</td><td> " . $linha['quantidade'] ."</td><td> " . $linha['preco'] ."</td>
+							<td> <span class='glyphicon glyphicon-minus'></span> </td></tr>";
+
+							$valortotal = $valortotal + ($linha['preco'] * $linha['quantidade']);
+						}	
+			      	?>
 			      </tbody>
 			    </table>
 			</div>
 
 			<div class="div-valorPedido col-xs-12 col-sm-12 col-md-12 col-lg-12" align="right">
-				<h4>Valor Total <span>R$ 38</span></h4>
+				<?php
+					echo"<h4>Valor Total <span>R$ ". number_format($valortotal,2,",",".") ."</span></h4>";
+				?>
 			</div>
 
 			<div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
