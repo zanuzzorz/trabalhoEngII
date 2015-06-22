@@ -45,7 +45,7 @@
 
 		$query = "SELECT pr.descricao, ip.quantidade, pr.preco, p.status FROM pedido p INNER JOIN item_pedido ip ON
 		p.id = ip.idpedido INNER JOIN comanda c ON c.id = p.idcomanda INNER JOIN produto pr ON pr.id = ip.idproduto WHERE " .  $usuario[1] .
-		" AND p.status in (1,2,3) group by pr.preco";
+		" AND p.status in (1,2,3) AND c.status = 1 group by pr.preco";
 
         $result = $banco -> select($query);
         $result2 = $banco -> select($query);

@@ -165,7 +165,7 @@ body {
 }
 
 .div_MesasDispTotal .div_MesasDisp .p_Mesa0 {
-	padding-top: 25px;
+	padding-top: 20px;
 	border: 3px solid red;
 	border-radius: 50%;
     display: inline-block;
@@ -173,7 +173,7 @@ body {
     width: 100px;
 }
 .div_MesasDispTotal .div_MesasDisp .p_Mesa1 {
-	padding-top: 25px;
+	padding-top: 20px;
 	border: 3px solid green;
 	border-radius: 50%;
     display: inline-block;
@@ -181,7 +181,7 @@ body {
     width: 100px;
 }
 .div_MesasDispTotal .div_MesasDisp .p_Mesa2 {
-	padding-top: 25px;
+	padding-top: 20px;
 	border: 3px solid goldenrod ;
 	border-radius: 50%;
     display: inline-block;
@@ -204,8 +204,8 @@ body {
 .div_MesasDispTotal .p_Legenda0 {
 	position: relative;
 	top: 15px;
-	background-color: red;
-	border: 3px solid red;
+	background-color: green;
+	border: 3px solid green;
 	border-radius: 50%;
     display: inline-block;
     height: 20px;
@@ -214,8 +214,8 @@ body {
 .div_MesasDispTotal .p_Legenda1 {
 	position: relative;
 	top: 15px;
-	background-color: green;
-	border: 3px solid green;
+	background-color: red;
+	border: 3px solid red;
 	border-radius: 50%;
     display: inline-block;
     height: 20px;
@@ -260,6 +260,49 @@ body {
 #div_Preco {
 	position: relative;
 }
+
+
+/* ------------------------------------------------------- */
+/* Ajustes Responsivo */
+@media only screen and (max-width: 991px) {
+	.form-quantidade {
+		margin: 0 5px 15px 0;
+		width: 170px;
+		float: left; 
+	}
+	.form_Quantidade {
+		width: 270px;
+	}
+
+	.div-Login,
+	.div-Cadastro {
+		margin-left: 20%;
+	}
+}
+
+@media only screen and (max-width: 450px) {
+	.div_LoginTotal,
+	.div-CadastroTotal {
+		margin-bottom: 50px;
+	}
+	.div-Login,
+	.div-Cadastro {
+		margin-left: 0;
+		width: 300px ;
+	}
+}
+
+@media only screen and (min-width: 1px) and (max-width: 991px) {
+	.div-RecuperaSenha,
+	.div-Login, 
+	.div-Cadastro {
+		width: 100% !important;
+		margin-left: 0 !important;
+	}
+
+}
+
+
 .table, tr, td, th{
 	border: 1px solid black;
 	text-align: center;
