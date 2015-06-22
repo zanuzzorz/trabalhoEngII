@@ -45,7 +45,7 @@
 
 		$query = "SELECT pr.descricao, ip.quantidade, pr.preco, p.status FROM pedido p INNER JOIN item_pedido ip ON
 		p.id = ip.idpedido INNER JOIN comanda c ON c.id = p.idcomanda INNER JOIN produto pr ON pr.id = ip.idproduto WHERE " .  $usuario[1] .
-		" AND p.status in (1,2,3) AND c.status = 1 group by pr.preco";
+		" AND p.status = 5 ";
 
         $result = $banco -> select($query);
         $result2 = $banco -> select($query);
@@ -62,30 +62,7 @@
 			</div>
 
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
-				<br />
 				
-				<table id="table_Status" class="table ">
-					<tr class="success">
-						<td><strong>STATUS</strong></td>
-						<td><strong>
-						<?php
-							$status = mysql_fetch_assoc($result2);
-							if ($status['status'] == 1) {
-								echo "AGUARDANDO...";
-							}
-							else if ($status['status'] == 2) {
-								echo "EM PREPARO...";
-							}
-							else if ($status['status'] == 3) {
-								echo "SENDO ENTREGUE...";
-							}
-						?>
-						</strong></td>
-					</tr>
-				</table>
-				
-					
-				</table>
 				<table class="table table-striped">
 			      <thead>
 			        <tr class="success">
