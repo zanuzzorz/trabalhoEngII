@@ -29,6 +29,11 @@
 				<div class="div-Login col-xs-12 col-sm-12 col-md-12 col-lg-12" align="left">
 					<form method="post" action="efetuarLogin.php">
 						<?php
+							session_start();
+							if(isset($_GET['logout']) && $_GET['logout']==1) { 
+								session_destroy();
+							}
+
 							if(isset($_GET['error'])){
 								if($_GET['error']==1){
 									echo "<div class='alert alert-danger'><strong>Atenção!</strong> Usuário ou Senha incorretos!</div>";

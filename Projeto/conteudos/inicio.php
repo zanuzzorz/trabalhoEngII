@@ -1,5 +1,6 @@
 <?php
 	require 'session.php';
+	require 'sessionMesa.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt">

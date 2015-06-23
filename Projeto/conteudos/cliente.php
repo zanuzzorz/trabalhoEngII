@@ -29,6 +29,11 @@
 
     <div class=" animated zoomIn" align="center">
         <div class="container" >
+            <div class="div_InicioTotal col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
+                    <a href="login.php?logout=1" class="btn btn-warning pull-right"><span>Sair</span></a>
+                </div>
+            </div>
             <div class="row div_Administrador">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="row" >

@@ -1,5 +1,7 @@
 <?php
 	require 'session.php';
+	require 'sessionAdmin.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="pt">

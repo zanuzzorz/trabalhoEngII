@@ -1,5 +1,10 @@
 <?php
 	require 'session.php';
+
+	if($_SESSION['tipo'] == 1){ //mesa
+	 	echo "<meta http-equiv='refresh' content='0; url=index.php'>";
+	}
+
 ?>
 <!DOCTYPE html>
 <html lang="pt">
