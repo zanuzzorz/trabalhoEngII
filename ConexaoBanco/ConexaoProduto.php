@@ -19,23 +19,11 @@
   	}*/
 
   	//A função buscarTodos será nesse estilo
-  	/*public function buscarTodos(){
-            $Sql="SELECT * FROM produto";
-     	    $Resultado = parent::select($Sql);
-     	    $Endereco = NULL;
-     	    $i = 0;
-     	    while ($linha = mysql_fetch_assoc($Resultado)) {
- 		$Endereco[$i] = new \Entidades\Endereco();
-		$Endereco[$i]->set_isfree($linha["id"]);
-		$Endereco[$i]->set_code($linha["numero"]);
-		$Endereco[$i]->set_capacity($linha["complemento"]);
-		$Endereco[$i]->set_isfree($linha["estado"]);
-		$Endereco[$i]->set_isfree($linha["bairro"]);
-		$Endereco[$i]->set_isfree($linha["rua"]);
-		$i++;
-     	     }
-    	    return $Endereco;
-  	 }*/
+    public function buscarTodos(){
+      $Sql = "SELECT * FROM produto";
+      $Resultado = parent::select($Sql);
+      return $Resultado;
+    }
 
    }
 ?>

@@ -18,7 +18,7 @@ body {
 /* ------------------------------------------------------- */
 /*Inicio*/
 .div_InicioTotal {
-	padding-top: 30px;
+	padding: 30px 0;
 }
 
 .img_Logo {
@@ -45,7 +45,7 @@ body {
 }
 .customNavigation .next {
 	position: absolute ;
-	top: 170px;
+	top: 100px;
 	right: -25px; 
 	font-size: 27px;
 	color: #333;
@@ -53,7 +53,7 @@ body {
 }
 .customNavigation .prev {
 	position: absolute ;
-	top: 170px;
+	top: 100px;
 	left: -25px; 
 	font-size: 27px;
 	color: #333;

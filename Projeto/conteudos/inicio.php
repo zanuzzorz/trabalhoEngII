@@ -1,6 +1,5 @@
 <?php
 	require 'session.php';
-	require 'sessionMesa.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -39,6 +38,14 @@
 		<div class="div_InicioTotal col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
+				<?php
+					if($_SESSION['tipo'] == 0){ //Administrador
+					 	echo "<a href='administrador.php' class='btn btn-primary pull-left'><span>Voltar</span></a>";
+					}else if ($_SESSION['tipo'] == 2){//Cliente
+					 	echo "<a href='cliente.php' class='btn btn-primary pull-left'><span>Voltar</span></a>";
+					}
+				?>
+
 				<a href="#" class="btn btn-info pull-right"><span>Como Usar!</span></a>
 			</div>
 
@@ -70,79 +77,69 @@
 
 
 			<div class="div_InicioProdutos col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
+				<form method='POST' action=''>
+
+					<div class="owl-carousel owl-theme" id="owl_Produtos">
 
 
-				<div class="owl-carousel owl-theme" id="owl_Produtos">
-				    <div class="item">
-						<h2>PRODUTO X</h2>
-					    
-					  	<div class="owl-carousel" id="owl_Ingredientes">
-					     	<div class="item">
-					     		<h3>Ingrediente 1</h3>
-					     		<h3>Ingrediente 2</h3>
-					     		<h3>Ingrediente 3</h3>
-					     		<h3>Ingrediente 4</h3>
-					     	</div>
-						  	<div class="item">
-					     		<h3>Ingrediente 5</h3>
-					     		<h3>Ingrediente 6</h3>
-					     		<h3>Ingrediente 7</h3>
-					     		<h3>Ingrediente 8</h3>
-					     	</div>
-						</div> 
+						<?php
+							require("../../ConexaoBanco/ConexaoBase.php");
+							require("../../ConexaoBanco/ConexaoProduto.php");
+							require("../../Entidades/Produto.php");
 
-						<h2>VALOR</h2>
-						<h2><strong>R$ 15,00</strong></h2>
+							$banco = new ConexaoBase();
+							$conexao = $banco -> abrirConexao();
+
+							$conexaoProduto = new ConexaoProduto();
+							$resultado = $conexaoProduto->buscarTodos();
+
+							while ($linha = mysql_fetch_array($resultado)) {
+								if ($linha[3]) {
+									echo "
+								    <div class='item'>
+										<h2>". $linha[4] ."</h2>
+										<h2>Valor: <strong> R$". $linha[1] ."</strong></h2>
+									    <h3><strong>Ingredientes:</strong> ". $linha[3] ."</h3>
+									</div>";
+								} else {
+									echo "
+								    <div class='item'>
+										<h2>". $linha[4] ."</h2>
+										<h2>Valor: <strong> R$". $linha[1] ."</strong></h2>
+									</div>";
+
+								}
+
+							}
+						?>
+
 					</div>
 
-					    <div class="item">
-						<h2>PRODUTO Y</h2>
-
-
-					  	<div class="owl-carousel" id="owl_Ingredientes02">
-					     	<div class="item">
-					     		<h3>Ingrediente Z</h3>
-					     		<h3>Ingrediente Z</h3>
-					     		<h3>Ingrediente Z</h3>
-					     		<h3>Ingrediente Z</h3>
-					     	</div>
-						  	
-						</div> 
-
-						<h2>VALOR</h2>
-						<h2><strong>R$ 17,00</strong></h2>
+					<div class="customNavigation">
+					  <a class="btn prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+					  <a class="btn next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 					</div>
 
-				</div>
+					<div class='div_InicioPedido col-xs-12 col-sm-12 col-md-12 col-lg-12' align='center'>
+						<div class='col-xs-8 col-sm-8 col-md-8 col-lg-8 form-group' align='right' class=''>
+							<input type='number' class='form-control form_Quantidade' placeholder='Quantidade'>
+						</div>
 
-				<div class="customNavigation">
-				  <a class="btn prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-				  <a class="btn next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-				</div>
-
+						<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4' align='right'></div>
+						<div class='div-AddPedido col-xs-12 col-sm-12 col-md-12 col-lg-12' align='center'>
+							<a href='#' class='btn btn-lg btn-success'><span>ADICIONAR PEDIDO</span></a>
+						</div>
+					</div>
+				</form>
+			</div>
 
 	
-			</div>
 
-			<div class="div_InicioPedido col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
-				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" align="right">
-					<form >
-						<div class="form-group">
-							<select class="form-control form_Quantidade">
-								<option value="" disabled selected>Quantidade</option>
-							</select>
-						</div>
-					</form>
-				</div>
-				<div class="div-verPedido col-xs-4 col-sm-4 col-md-4 col-lg-4" align="right">
-					<a href="verPedido.php" class="btn btn-primary"><span>VER PEDIDO</span></a>
-				</div>
-				<div class="div-AddPedido col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
-					<a href="#" class="btn btn-lg btn-success"><span>ADICIONAR PEDIDO</span></a>
-				</div>
+			
 				
+			<div class="div-verPedido col-xs-12 col-sm-12 col-md-12 col-lg-12" align="right">
+				<a href="verPedido.php" class="btn btn-primary"><span>VER PEDIDO</span></a>
 			</div>
-
 		</div>
 	</div>
 	
