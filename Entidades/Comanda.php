@@ -1,5 +1,7 @@
 <?php
 
+namespace Entidades;
+
 class Comanda {
   public $ID;
   public $Usuario;

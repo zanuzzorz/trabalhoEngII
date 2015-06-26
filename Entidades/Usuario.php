@@ -1,5 +1,7 @@
 <?php
 
+namespace Entidades;
+
 class Usuario { 
 
   public $Status;

@@ -1,5 +1,7 @@
 <?php
 
+namespace Entidades;
+
 class Pedido {
   public $ID;
   public $Status;

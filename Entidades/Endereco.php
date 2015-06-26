@@ -1,5 +1,7 @@
 <?php
 
+namespace Entidades;
+
 class Endereco {
   public $ID;
   public $Numero;

@@ -94,5 +94,26 @@
       		$Resultado = parent::select($sql);
 			return $Resultado;
 		}
+
+		public function buscarPorEmail($email){
+			$query="SELECT id,nome,usuario,senha FROM usuario WHERE email='".$email."'";
+			$Resultado = parent::select($query);
+			if($Resultado){
+				$row=mysql_fetch_assoc($Resultado);
+				$usuario = new \Entidades\Usuario();
+				$usuario->ID = $row['id'];
+				$usuario->defineNome($row['nome']);
+				$usuario->defineUsuario($row['usuario']);
+				$usuario->defineSenha($row['senha']);
+				return $usuario;
+			}
+			else return NULL;
+		}
+		
+		public function atualizarSenha($id, $senha){
+			$query="UPDATE usuario SET senha='".$senha."' WHERE id=".$id;
+			return parent::update($query);
+		}
+
 	} 
 ?>

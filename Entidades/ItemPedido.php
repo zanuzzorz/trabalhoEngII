@@ -1,5 +1,7 @@
 <?php
 
+namespace Entidades;
+
 class ItemPedido {
   public $ID;
   public $Quantidade; 

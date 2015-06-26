@@ -1,5 +1,7 @@
 <?php
 
+namespace Entidades;
+
 class Produto { 
   public $ID;
   public $Preco;

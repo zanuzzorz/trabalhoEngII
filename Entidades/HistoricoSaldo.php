@@ -1,5 +1,7 @@
 <?php
 
+namespace Entidades;
+
 class HistoricoSaldo {
   public $ID;
   public $DataMvto;
