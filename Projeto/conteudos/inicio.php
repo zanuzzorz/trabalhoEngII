@@ -54,13 +54,33 @@
 			</div>
 
 			<div class="div_InicioCategoria col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
-				<form >
 					<div class="form-group">
-						<select class="form-control">
-							<option value="" disabled selected>Categoria</option>
+					    <select required name="" id="categoria" class="form-control">
+					    	<option value="0">Todas</option>
+					    	<?php
+
+					    		if(isset($_GET["cat"])){
+        							$id = $_GET["cat"];
+        						}else{
+        							$id = 0;
+        						}
+                    
+                   				require("../../ConexaoBanco/ConexaoBase.php");
+                    			require("../../ConexaoBanco/ConexaoCategoriaProduto.php");
+                    			require("../../Entidades/Categoria.php");
+                    			$ConexaoCategoriaProduto = new ConexaoCategoriaProduto();
+                    
+                               	$result=$ConexaoCategoriaProduto->buscarTodos();
+                    		                    	
+			                    while ($categoria = mysql_fetch_array($result)){
+			                    	$selected = "";
+			                    	if($categoria[0] == $id){$selected = "selected";}
+        	                		echo "<option value=".$categoria[0]." $selected>" . $categoria[1] . "</option>";
+                    			}
+                    			             
+                    		?>
 						</select>
 					</div>
-				</form>
 			</div>
 
 			<div class="div_InicioGaleria col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
@@ -80,7 +100,7 @@
 					<div class="owl-carousel owl-theme" id="owl_Produtos">
 
 						<?php
-							require("../../ConexaoBanco/ConexaoBase.php");
+							//require("../../ConexaoBanco/ConexaoBase.php");
 							require("../../ConexaoBanco/ConexaoProduto.php");
 							require("../../Entidades/Produto.php");
 
@@ -88,7 +108,7 @@
 							$conexao = $banco -> abrirConexao();
 
 							$conexaoProduto = new ConexaoProduto();
-							$resultado = $conexaoProduto->buscarTodos();
+							$resultado = $conexaoProduto->buscarTodosCategoria($id);
 
 							while ($linha = mysql_fetch_array($resultado)) {
 								if ($linha[3]) {
@@ -157,6 +177,13 @@
 			</div>
 		</div>
 	</div>
+
+<script type="text/javascript">
+	$( "#categoria" ).change(function() {
+		var id = $( "#categoria option:selected" ).val();	
+		location.href="inicio.php?cat="+id;
+	});
+</script>	
 
 </body>
 </html>
