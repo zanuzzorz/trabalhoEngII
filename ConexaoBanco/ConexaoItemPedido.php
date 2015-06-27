@@ -3,10 +3,19 @@
 	class ConexaoItemPedido extends ConexaoBase {
 
 		//A função inserir será nesse estilo
-		/*public function inserirItemPedido($obj){
-			$Sql="INSERT INTO item_pedido () VALUES ()";
-			return parent::insert($Sql);
-		}*/
+		public function inserirItemPedido($item){
+			$Qtd 		   = $item->Quantidade;
+			$Valor  	 = $item->ValorUnitario;
+			$Produto	 = $item->Produto;
+			$NrPedido  = $item->NumeroPedido;
+
+			$Sql    = "INSERT INTO item_pedido VALUES ('NULL', '$Qtd', '$Valor', '$NrPedido', '$Produto')";
+
+			echo $Sql;
+
+			$return = parent::insert($Sql);
+			return $return;
+		}
 
 		//A função atualizar será nesse estilo
 		/*public function atualizarItemPedido($obj){
@@ -34,5 +43,5 @@
 			return $Endereco;
 		}*/
 
-	} 
+	}
 ?>

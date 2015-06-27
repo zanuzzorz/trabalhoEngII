@@ -25,5 +25,11 @@
       return $Resultado;
     }
 
+    // Busca valor unitario do produto
+    public function buscarVlrUnitario($id){
+      $Sql = "SELECT preco FROM produto WHERE id =".$id."";
+      $Resultado = parent::select($Sql);
+      return $Resultado;
+    }
    }
 ?>

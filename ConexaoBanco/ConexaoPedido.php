@@ -3,36 +3,32 @@
 	class ConexaoPedido extends ConexaoBase {
 
 		//A função inserir será nesse estilo
-		/*public function inserirPedido($obj){
-			$Sql="INSERT INTO pedido () VALUES ()";
-			return parent::insert($Sql);
-		}*/
+		public function inserirPedido($pedido){
+			$Status = $pedido->Status;
+			$Valor  = $pedido->recebeValor();
+			$Data		= $pedido->recebeData();
+			$IdCom  = $pedido->IDComanda;
 
-		//A função atualizar será nesse estilo
-		/*public function atualizarPedido($obj){
-			$Sql="update pedido set numero ='" . $obj->get_name() . "', complemento ='" . $obj->get_phone() . "', estado ='" . $obj->get_email() . "',";
-			$Sql.="bairro ='" . $obj->get_street() . "', rua =" . $obj->get_number();
-			return parent::update($Sql);
-		}*/
+			$Sql    = "INSERT INTO pedido VALUES ('NULL', '$Status', '$Valor', '$Data', '$IdCom')";
 
-		//A função buscarTodos será nesse estilo
-		/*public function buscarPedido(){
-			$Sql="SELECT * FROM pedido";
-			$Resultado = parent::select($Sql);
-			$Endereco = NULL;
-			$i = 0;
-			while ($linha = mysql_fetch_assoc($Resultado)) {
-				$Endereco[$i] = new \Entidades\Endereco();
-				$Endereco[$i]->set_isfree($linha["id"]);
-				$Endereco[$i]->set_code($linha["numero"]);
-				$Endereco[$i]->set_capacity($linha["complemento"]);
-				$Endereco[$i]->set_isfree($linha["estado"]);
-				$Endereco[$i]->set_isfree($linha["bairro"]);
-				$Endereco[$i]->set_isfree($linha["rua"]);
-				$i++;
-			}
-			return $Endereco;
-		}*/
+			$return = parent::insert($Sql);
+			return $return;
+		}
 
-	} 
+		public function buscarIdPedidoPorComanda($comanda){
+			$Sql = "SELECT id FROM pedido WHERE idcomanda =".$comanda." and
+			 				status = 5";
+			$id = parent::select($Sql);
+
+			if($id) return mysql_fetch_array($id);
+			else return NULL;
+		}
+
+		public function buscarPedidoPorComanda($id){
+			$Sql = "SELECT * FROM pedido WHERE idcomanda =".$id."";
+			$data = parent::select($Sql);
+			if($data) return mysql_fetch_array($data);
+			else return NULL;
+		}
+	}
 ?>

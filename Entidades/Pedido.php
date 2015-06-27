@@ -5,7 +5,7 @@ namespace Entidades;
 class Pedido {
   public $ID;
   public $Status;
-  public $NrPedido;
+  public $IDComanda;
 
   private $Valor;
   private $DataPedido;
@@ -15,7 +15,7 @@ class Pedido {
   }
 
   public function defineData ($Data) {
-    $this->DataPedido = $data;
+    $this->DataPedido = $Data;
   }
 
   public function recebeValor () {
