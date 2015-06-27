@@ -31,5 +31,13 @@
       $Resultado = parent::select($Sql);
       return $Resultado;
     }
+
+    //A função buscarTodosCategoria será nesse estilo
+    public function buscarTodosCategoria($id){
+      $Sql = "SELECT * FROM produto WHERE (produto.idcategoria =".$id.") or ( ".$id." = 0)";
+      $Resultado = parent::select($Sql);
+      return $Resultado;
+    }
+
    }
 ?>
