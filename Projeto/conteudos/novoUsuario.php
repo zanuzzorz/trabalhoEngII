@@ -26,7 +26,7 @@
 		
 		$tipo = $_POST['tipo'];
 
-		$usuario = new Usuario();
+		$usuario = new \Entidades\Usuario();
 		$conexaoUsuario = new ConexaoUsuario();
 
 		$usuario -> defineNome($nome);
@@ -42,10 +42,15 @@
 
 		$usuario -> Tipo = $tipo;
 
-		$conexaoUsuario -> inserirUsuario($usuario);
+		$res = $conexaoUsuario -> inserirUsuario($usuario);
 
 		//$banco -> fecharConexao($conexao);
-        echo "<meta http-equiv='refresh' content='0; url=cadastroUsuario.php?cadastro=1'>";
+		if ($res == 1) {
+        	echo "<meta http-equiv='refresh' content='0; url=cadastroUsuario.php?cadastro=1'>";
+		} else {
+        	echo "<meta http-equiv='refresh' content='0; url=cadastroUsuario.php?cadastro=3'>";
+		}
+		
 
 	}else{
         echo "<meta http-equiv='refresh' content='0; url=cadastroUsuario.php?cadastro=2'>";

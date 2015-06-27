@@ -12,7 +12,7 @@
         $descricao     = $_POST['descricaoCategoria'];
         $categoriaVar  = $_POST['categoriaProduto'];
 
-        $categoria  = new Categoria();
+        $categoria  = new \Entidades\Categoria();
 
         $categoria->Descricao  = $descricao;
         $categoria->Tipo       = $categoriaVar;

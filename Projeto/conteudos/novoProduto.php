@@ -16,7 +16,7 @@
         $subcategoria  = $_POST["subcategoria"];
 
         $situacao = isset($_POST["ativo"]) ? True : False;
-        $produto  = new Produto();
+        $produto  = new \Entidades\Produto();
 
         $produto->Preco         = $preco;
         $produto->Situacao      = $situacao;

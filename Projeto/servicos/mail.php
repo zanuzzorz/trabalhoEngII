@@ -1,22 +1,24 @@
 <?php
 
-	require_once('phpmailer/class.phpmailer.php');	
+	require_once('phpmailer/class.phpmailer.php');
+
 	
 	class mail {
 		
 		function enviarEmailNovaSenha($email,$username,$password){
 			$phpmail = new PHPMailer();
-			$phpmail->CharSet ="ISO-8859-1";
 			$phpmail->IsSMTP();
-			$phpmail->SMTPAuth   = true; 
+			$phpmail->SMTPDebug = 2;
+			$phpmail->Debugoutput = 'html';
 			$phpmail->SMTPSecure = "tls";
+			$phpmail->SMTPAuth   = true; 
+			$phpmail->Host       = "smtp.gmail.com";          
 			$phpmail->Port       = 587;
-			$phpmail->Host       = "smtp.live.com";          
-			$phpmail->Username   = "email@hotmail.com";  
-			$phpmail->Password   = "senha"; 
-			$phpmail->From       = 'email@hotmail.com';
+			$phpmail->Username   = "garcomonline2@gmail.com";  
+			$phpmail->Password   = "trabeng2"; 
+			$phpmail->From       = 'garcomonline2@gmail.com';
 			$phpmail->FromName   = 'Garçom Online';	
-			$phpmail->SetFrom('email@hotmail.com', 'Garçom Online');	
+			$phpmail->SetFrom('garcomonline2@gmail.com', 'Garçom Online');	
 			$phpmail->AddAddress($email);	
 			$phpmail->Subject = "Nova senha";
 			$phpmail->Body       = "Olá, ".$username."! Sua nova senha é " . $password . "";

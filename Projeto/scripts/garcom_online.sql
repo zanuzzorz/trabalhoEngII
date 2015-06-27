@@ -107,6 +107,14 @@ CREATE TABLE IF NOT EXISTS item_pedido(
 
 
 --
+-- Indexes for table `usuario`
+--
+ALTER TABLE usuario
+  ADD UNIQUE KEY usuario (usuario),
+  ADD UNIQUE KEY email (email);
+
+
+--
 -- Extraindo dados da tabela usuario
 --
 INSERT INTO `usuario` (`id`, `nome`, `usuario`, `senha`, `status`, `saldo`, `cpfcnpj`, `email`, `tipo`, `endereco`, `cidade`, `uf`) VALUES

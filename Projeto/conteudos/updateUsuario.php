@@ -25,7 +25,7 @@
 		$tipo = $_SESSION['tipo'];
 
 
-		$usuario = new Usuario();
+		$usuario = new \Entidades\Usuario();
 		$conexaoUsuario = new ConexaoUsuario();
 		$user=$conexaoUsuario->buscarUsuarioID($_SESSION['usuario']);
 		

@@ -19,7 +19,10 @@
 			$uf =  $usuario -> recebeUf();
 
 			$sql="INSERT INTO usuario () VALUES ('NULL','$nome','$login','$senha','$status','$saldo','$cpf','$email','$tipo','$endereco','$cidade','$uf')";
-			return parent::insert($sql);
+			$data = parent::insert($sql);
+
+			if($data == 1) return $data;
+			else return NULL;
 		}
 
 		//A função atualizar será nesse estilo

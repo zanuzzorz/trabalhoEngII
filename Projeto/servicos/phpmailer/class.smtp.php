@@ -185,6 +185,9 @@ class SMTP
      */
     public function connect($host, $port = null, $timeout = 30, $options = array())
     {
+        if (count($options) == 0) {
+           $options['ssl'] = array('verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true);
+       }
         // Clear errors to avoid confusion
         $this->error = null;
 
