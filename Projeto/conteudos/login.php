@@ -1,3 +1,7 @@
+<?php
+	require("../../ConexaoBanco/ConexaoBase.php");
+	require("../../ConexaoBanco/ConexaoUsuario.php");
+?>	
 <!DOCTYPE html>
 <html lang="pt">
 	<head>
@@ -31,6 +35,10 @@
 						<?php
 							session_start();
 							if(isset($_GET['logout']) && $_GET['logout']==1) { 
+								if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 1) {
+									$conexaoUsuario = new ConexaoUsuario();
+									$resultado = $conexaoUsuario->atualizaStatusMesa($_SESSION['usuario'],"2");
+								}
 								session_destroy();
 							}
 

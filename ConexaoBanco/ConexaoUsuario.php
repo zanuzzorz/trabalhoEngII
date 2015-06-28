@@ -125,7 +125,7 @@
 			return $Resultado;
 		}
 		
-		//A função buscarTodos será nesse estilo
+		//Busca de Usuario por Tipo
 		public function buscarPorTipo($tipo){
       		$Sql = "SELECT usuario,nome FROM usuario WHERE tipo = '$tipo'";
       		$Resultado = parent::select($Sql);
