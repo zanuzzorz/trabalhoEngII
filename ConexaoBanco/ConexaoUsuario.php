@@ -117,6 +117,20 @@
 			$query="UPDATE usuario SET senha='".$senha."' WHERE id=".$id;
 			return parent::update($query);
 		}
+		
+		//Atualiza Status Mesa para Ocupada
+		public function atualizaStatusMesa($usuario,$status){
+      		$sql = "UPDATE usuario SET status='$status' WHERE usuario='$usuario' ";
+      		$Resultado = parent::update($sql);
+			return $Resultado;
+		}
+		
+		//A função buscarTodos será nesse estilo
+		public function buscarPorTipo($tipo){
+      		$Sql = "SELECT usuario,nome FROM usuario WHERE tipo = '$tipo'";
+      		$Resultado = parent::select($Sql);
+			return $Resultado;
+		}
 
 	} 
 ?>

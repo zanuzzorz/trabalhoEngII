@@ -28,7 +28,7 @@
 <body>
 
 	<div class="div_IniciaAtendimento animated zoomIn" align="center">
-		<a href="inicio.php" class="btn btn-success"><span>INICIAR ATENDIMENTO</span></a>
+		<a href="atualizaStatusMesa.php?opcao=1" class="btn btn-success"><span>INICIAR ATENDIMENTO</span></a>
 	</div>
 
 </body>
