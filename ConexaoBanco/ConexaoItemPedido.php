@@ -11,8 +11,6 @@
 
 			$Sql    = "INSERT INTO item_pedido VALUES ('NULL', '$Qtd', '$Valor', '$NrPedido', '$Produto')";
 
-			echo $Sql;
-
 			$return = parent::insert($Sql);
 			return $return;
 		}

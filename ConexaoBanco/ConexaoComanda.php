@@ -14,7 +14,6 @@
 
 		//A função atualizar será nesse estilo
 		public function AtualizarComanda($idComanda, $valor){
-
 			$sql="UPDATE comanda set valor ='" .$valor. "'WHERE comanda.id =".$idComanda."";
 			return parent::update($sql);
 		}

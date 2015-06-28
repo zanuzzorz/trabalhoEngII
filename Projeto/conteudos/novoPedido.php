@@ -34,7 +34,7 @@
     $valorPedido = $qtd * $vlrproduto;
 
     if ($comandaUsuario == NULL){
-       echo "001";
+       /* Não tem comanda */
        $novoPedido     = new \Entidades\Pedido();
        $ConexaoPedido  -> inserirPedido($novoPedido);
 
@@ -63,11 +63,11 @@
        $ConexaoItem->inserirItemPedido($novoItem);
     }
     else {
-       echo "002";
+      //  echo "002";
        $pedidoComanda  = $ConexaoPedido->buscarPedidoPorComanda($comandaUsuario[0]);
 
+       /* Tem comanda mas não tem pedido */
        if ($pedidoComanda == NULL){
-         echo "002.1";
           $novoPedido   = new \Entidades\Pedido();
           $novoPedido->Status     = 5;
           $novoPedido->defineValor($valorPedido);
@@ -75,24 +75,35 @@
 
           $idComanda = $comandaUsuario[0];
 
-          $novoPedido->IDComanda  = $idComanda[0];
+          $novoPedido->IDComanda  = $idComanda;
           $ConexaoPedido -> inserirPedido($novoPedido);
 
           $novoItem     = new \Entidades\ItemPedido();
           $novoItem->Quantidade   = $qtd;
           $novoItem->Produto      = $idProduto;
           $novoItem->ValorUnitario = $vlrproduto;
-          $idPedido = $ConexaoPedido ->buscarIdPedidoPorComanda($idComanda[0]);
+          $idPedido = $ConexaoPedido ->buscarIdPedidoPorComanda($idComanda);
           $novoItem->NumeroPedido = $idPedido[0];
+
           $ConexaoItem->inserirItemPedido($novoItem);
-          $ConexaoComanda->AtualizarComanda($idComanda[0], $comandaUsuario[1] + $valorPedido);
+          $ConexaoComanda->AtualizarComanda($idComanda, $comandaUsuario[1] + $valorPedido);
        }
+       /* Tem comanda e tem pedido */
        else{
-         echo "002.2";
+          $idComanda = $comandaUsuario[0];
+          $idPedido = $ConexaoPedido ->buscarIdPedidoPorComanda($idComanda);
+
           $novoItem     = new \Entidades\ItemPedido();
           $novoItem->Quantidade   = $qtd;
-          $novoItem->Produto      = "1";
-          $novoItem->NumeroPedido = $pedidoComanda->ID;
+          $novoItem->Produto      = $idProduto;
+          $novoItem->ValorUnitario = $vlrproduto;
+          $idPedido  = $ConexaoPedido ->buscarIdPedidoPorComanda($idComanda);
+          $valorPedi = $ConexaoPedido ->buscarValorAtualPedido($idPedido[0]);
+          $novoItem->NumeroPedido = $idPedido[0];
+
+          $ConexaoItem->inserirItemPedido($novoItem);
+          $ConexaoComanda->AtualizarComanda($idComanda, $comandaUsuario[1] + $valorPedido);
+          $ConexaoPedido->AtualizarValorPedido($idPedido[0], $valorPedi[0] + $valorPedido);
        }
     }
   }

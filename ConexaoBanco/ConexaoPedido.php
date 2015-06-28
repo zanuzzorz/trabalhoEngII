@@ -15,6 +15,20 @@
 			return $return;
 		}
 
+		public function buscarValorAtualPedido($idPedido){
+			$Sql = "SELECT valortotal FROM pedido WHERE id =".$idPedido."";
+
+			$id = parent::select($Sql);
+
+			if($id) return mysql_fetch_array($id);
+			else return NULL;
+		}
+
+		public function AtualizarValorPedido($idPedido, $valor){
+			$sql="UPDATE pedido set valortotal ='" .$valor. "'WHERE pedido.id =".$idPedido."";
+			return parent::update($sql);
+		}
+
 		public function buscarIdPedidoPorComanda($comanda){
 			$Sql = "SELECT id FROM pedido WHERE idcomanda =".$comanda." and
 			 				status = 5";
