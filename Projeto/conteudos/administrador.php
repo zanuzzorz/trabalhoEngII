@@ -28,7 +28,7 @@
 </head>
 <body>
 
-    <div class=" animated zoomIn" align="center">
+    <div class="div_AdministradorTotal animated zoomIn" align="center">
         <div class="container" >
              <div class="div_InicioTotal col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
@@ -57,6 +57,10 @@
                     <div class="row" >
                         <a href="cadastroCategoria.php" class="btn  btn-menor btn-primary"><span>Categoria</span></a>
                     </div>
+
+                    <div class="row" >
+                        <a href="inicio.php" class="btn  btn-menor btn-primary"><span>Cardápio</span></a>
+                    </div>
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -66,6 +70,10 @@
 
                     <div class="row" >
                         <a href="insereCredito.php" class="btn btn-menor btn-primary"><span>Adicionar Crédito</span></a>
+                    </div>
+
+                    <div class="row" >
+                        <a href="mesasDisponiveisAdm.php" class="btn btn-menor btn-primary"><span>Visualizar Mesas</span></a>
                     </div>
                 </div>
 

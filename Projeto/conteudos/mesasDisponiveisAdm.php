@@ -94,7 +94,7 @@
 			 
              <div class="row">
 	            <div class="div_BotaoVoltar col-xs-3 col-sm-6 col-md-6 col-lg-6" align="right">
-				    <a href="cliente.php" class="btn btn-lg btn-primary"><span>Voltar</span></a>
+				    <a href="administrador.php" class="btn btn-lg btn-primary"><span>Voltar</span></a>
 			    </div>
 
 			    <div class="col-xs-9 col-sm-9 col-md-6 col-lg-6" align="left">

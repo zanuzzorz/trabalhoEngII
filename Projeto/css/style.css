@@ -124,6 +124,9 @@ body {
 
 /* ------------------------------------------------------- */
 /* Administrador */
+.div_AdministradorTotal {
+	padding-bottom: 40px;
+}
 .div_Administrador {
 	margin-top: 10%;
 }
