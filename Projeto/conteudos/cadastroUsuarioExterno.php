@@ -51,6 +51,10 @@
 					    <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu login">
 					</div>
 					<div class="form-group">
+					    <label for="nome">CPF</label>
+					    <input type="number" class="form-control" name="cpf" id="cpf" placeholder="Digite seu CPF" max="99999999999">
+					</div>
+					<div class="form-group">
 					    <label for="email">Email</label>
 					    <input type="email" class="form-control" name="email" id="email" placeholder="Digite seu Email">
 					</div>
