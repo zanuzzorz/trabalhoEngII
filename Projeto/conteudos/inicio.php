@@ -44,6 +44,12 @@
 					}else if ($_SESSION['tipo'] == 2){//Cliente
 					 	echo "<a href='cliente.php' class='btn btn-primary pull-left'><span>Voltar</span></a>";
 					}
+
+					if(isset($_GET['cadastro'])){
+						if($_GET['cadastro']==1){
+							echo "<div class='col-md-offset-3 col-offset-lg-3 col-md-6 col-lg-6 alert alert-success' align='center'><strong>Atenção!</strong> Produto inserido com sucesso!</div>";
+						}
+					}
 				?>
 
 				<a href="#" class="btn btn-info pull-right"><span>Como Usar!</span></a>
@@ -54,33 +60,33 @@
 			</div>
 
 			<div class="div_InicioCategoria col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
-					<div class="form-group">
-					    <select required name="" id="categoria" class="form-control">
-					    	<option value="0">Todas</option>
-					    	<?php
+				<div class="form-group">
+				    <select required name="" id="categoria" class="form-control">
+				    	<option value="0">Todas</option>
+				    	<?php
 
-					    		if(isset($_GET["cat"])){
-        							$id = $_GET["cat"];
-        						}else{
-        							$id = 0;
-        						}
-                    
-                   				require("../../ConexaoBanco/ConexaoBase.php");
-                    			require("../../ConexaoBanco/ConexaoCategoriaProduto.php");
-                    			require("../../Entidades/Categoria.php");
-                    			$ConexaoCategoriaProduto = new ConexaoCategoriaProduto();
-                    
-                               	$result=$ConexaoCategoriaProduto->buscarTodos();
-                    		                    	
-			                    while ($categoria = mysql_fetch_array($result)){
-			                    	$selected = "";
-			                    	if($categoria[0] == $id){$selected = "selected";}
-        	                		echo "<option value=".$categoria[0]." $selected>" . $categoria[1] . "</option>";
-                    			}
-                    			             
-                    		?>
-						</select>
-					</div>
+				    		if(isset($_GET["cat"])){
+    							$id = $_GET["cat"];
+    						}else{
+    							$id = 0;
+    						}
+
+               				require("../../ConexaoBanco/ConexaoBase.php");
+                			require("../../ConexaoBanco/ConexaoCategoriaProduto.php");
+                			require("../../Entidades/Categoria.php");
+                			$ConexaoCategoriaProduto = new ConexaoCategoriaProduto();
+
+                           	$result=$ConexaoCategoriaProduto->buscarTodos();
+
+		                    while ($categoria = mysql_fetch_array($result)){
+		                    	$selected = "";
+		                    	if($categoria[0] == $id){$selected = "selected";}
+    	                		echo "<option value=".$categoria[0]." $selected>" . $categoria[1] . "</option>";
+                			}
+
+                		?>
+					</select>
+				</div>
 			</div>
 
 			<div class="div_InicioGaleria col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
@@ -97,80 +103,77 @@
 
 
 			<div class="div_InicioProdutos col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
-					<div class="owl-carousel owl-theme" id="owl_Produtos">
+				<div class="owl-carousel owl-theme" id="owl_Produtos">
 
-						<?php
-							//require("../../ConexaoBanco/ConexaoBase.php");
-							require("../../ConexaoBanco/ConexaoProduto.php");
-							require("../../Entidades/Produto.php");
+					<?php
+						//require("../../ConexaoBanco/ConexaoBase.php");
+						require("../../ConexaoBanco/ConexaoProduto.php");
+						require("../../Entidades/Produto.php");
 
-							$banco = new ConexaoBase();
-							$conexao = $banco -> abrirConexao();
+						$banco = new ConexaoBase();
+						$conexao = $banco -> abrirConexao();
 
-							$conexaoProduto = new ConexaoProduto();
-							$resultado = $conexaoProduto->buscarTodosCategoria($id);
+						$conexaoProduto = new ConexaoProduto();
+						$resultado = $conexaoProduto->buscarTodosCategoria($id);
 
-							while ($linha = mysql_fetch_array($resultado)) {
-								if ($linha[3]) {
-									echo "
-										<form method='POST' action='novoPedido.php'>
-								    	<div class='item'>
-											<input type='number' class='form-control form_Quantidade hidden' value ='"
-												. $linha[0] . "' name='idproduto'>
-											<input type='number' class='form-control form_Quantidade hidden' value ='"
-												. $linha[1] . "' name='idvalor'>
-											<h2>". $linha[4] ."</h2>
+						while ($linha = mysql_fetch_array($resultado)) {
+							if ($linha[3] != "") {
+								echo "
+									<form method='POST' action='novoPedido.php'>
+						    		<div class='item'>
+										<input type='number' class='form-control form_Quantidade hidden' value ='". $linha[0] . "' name='idproduto'>
+										<input type='number' class='form-control form_Quantidade hidden' value ='". $linha[1] . "' name='idvalor'>
+										<h2>". $linha[4] ."</h2>
 
-											<h2>Valor: <strong> R$". $linha[1] ."</strong></h2>
-									    	<h3><strong>Ingredientes:</strong> ". $linha[3] ."</h3>
+										<h2>Valor: <strong> R$". $linha[1] ."</strong></h2>
+							    		<h3><strong>Ingredientes:</strong> ". $linha[3] ."</h3>
+
+										<div class='div_InicioPedido col-xs-12 col-sm-12 col-md-12 col-lg-12' align='center'>
+											<div class='col-xs-8 col-sm-8 col-md-8 col-lg-8 form-group' align='right' class=''>
+												<input type='number' class='form-control form_Quantidade'id='quantidade' name='quantidade' placeholder='Quantidade'>
 											</div>
 
-											<div class='div_InicioPedido col-xs-12 col-sm-12 col-md-12 col-lg-12' align='center'>
-												<div class='col-xs-8 col-sm-8 col-md-8 col-lg-8 form-group' align='right' class=''>
-													<input type='number' class='form-control form_Quantidade'id='quantidade' name='quantidade' placeholder='Quantidade'>
-												</div>
-
-												<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4' align='right'></div>
+											<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4' align='right'></div>
 												<div class='div-AddPedido col-xs-12 col-sm-12 col-md-12 col-lg-12' align='center'>
 													<button type='submit' id= 'cadastrarPedido' class='btn btn-lg btn-success'>ADICIONAR AO PEDIDO</button>
 												</div>
 											</div>
-										</form>";
-								} else {
-									echo "
-								    <div class='item'>
+										</div>
+									</form>";
+							} else {
+								echo "
+									<form method='POST' action='novoPedido.php'>
+							    	<div class='item'>
+							    		<input type='number' class='form-control form_Quantidade hidden' value ='". $linha[0] . "' name='idproduto'>
+										<input type='number' class='form-control form_Quantidade hidden' value ='". $linha[1] . "' name='idvalor'>
 										<h2>". $linha[4] ."</h2>
 										<h2>Valor: <strong> R$". $linha[1] ."</strong></h2>
-										</div>
-											<div class='div_InicioPedido col-xs-12 col-sm-12 col-md-12 col-lg-12' align='center'>
+
+										<div class='div_InicioPedido col-xs-12 col-sm-12 col-md-12 col-lg-12' align='center'>
 											<div class='col-xs-8 col-sm-8 col-md-8 col-lg-8 form-group' align='right' class=''>
-											<input type='number' class='form-control form_Quantidade'id='quantidade' name='quantidade' placeholder='Quantidade'>
-										</div>
+												<input type='number' class='form-control form_Quantidade'id='quantidade' name='quantidade' placeholder='Quantidade'>
+											</div>
 
 											<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4' align='right'></div>
-											<div class='div-AddPedido col-xs-12 col-sm-12 col-md-12 col-lg-12' align='center'>
-												<button type='submit' id= 'cadastrarPedido' class='btn btn-lg btn-success'>ADICIONAR AO PEDIDO</button>
+												<div class='div-AddPedido col-xs-12 col-sm-12 col-md-12 col-lg-12' align='center'>
+													<button type='submit' id= 'cadastrarPedido' class='btn btn-lg btn-success'>ADICIONAR AO PEDIDO</button>
+												</div>
 											</div>
 										</div>
 									</form>
-									";
-
-								}
-
+								";
 							}
-						?>
 
-					</div>
+						}
+					?>
 
-					<div class="customNavigation">
-					  <a class="btn prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-					  <a class="btn next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-					</div>
+				</div>
+
+				<div class="customNavigation">
+				  <a class="btn prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+				  <a class="btn next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+				</div>
 			</div>
-
-
-
-
 
 			<div class="div-verPedido col-xs-12 col-sm-12 col-md-12 col-lg-12" align="right">
 				<a href="verPedido.php" class="btn btn-primary"><span>VER PEDIDO</span></a>
@@ -178,12 +181,12 @@
 		</div>
 	</div>
 
-<script type="text/javascript">
-	$( "#categoria" ).change(function() {
-		var id = $( "#categoria option:selected" ).val();	
-		location.href="inicio.php?cat="+id;
-	});
-</script>	
+	<script type="text/javascript">
+		$( "#categoria" ).change(function() {
+			var id = $( "#categoria option:selected" ).val();
+			location.href="inicio.php?cat="+id;
+		});
+	</script>
 
 </body>
 </html>
