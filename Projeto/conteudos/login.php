@@ -27,10 +27,13 @@
 	<body>
 		<div class="container">
 			<div class="div_LoginTotal col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<a href="cadastroUsuarioExterno.php" class="btn btn-primary pull-right">Cadastre-se</a>
+
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
 					<img src="../imagens/logo/01.png" class="img-responsive img_Logo">
 				</div>
 				<div class="div-Login col-xs-12 col-sm-12 col-md-12 col-lg-12" align="left">
+
 					<form method="post" action="efetuarLogin.php">
 						<?php
 							session_start();
@@ -73,7 +76,6 @@
 						    <a href="recuperaSenha.php" class="pull-right">Esqueceu a senha?</a>
 						</div>
 						<button type="submit" class="btn btn-success">Logar</button>
-						<a href="cadastroUsuarioExterno.php" class="btn btn-warning btn-xs">Cadastre-se</a>
 					</form>
 				</div>
 			</div>
