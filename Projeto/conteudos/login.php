@@ -45,6 +45,13 @@
 							if(isset($_GET['senha']) && $_GET['senha']==1) { 
 								echo "<div class='alert alert-success'><strong>Sucesso!</strong> Senha enviada para o email selecionado!</div>";
 							}
+
+							if(isset($_GET['cadastro'])){
+								if($_GET['cadastro']==1){
+									echo "<div class='alert alert-success'><strong>Atenção!</strong> Cadastro Realizado com Sucesso!</div>";
+								}
+							}
+
 						?>
 				  		<div class="form-group">
 						    <label for="usuario">Login</label>
@@ -58,6 +65,7 @@
 						    <a href="recuperaSenha.php" class="pull-right">Esqueceu a senha?</a>
 						</div>
 						<button type="submit" class="btn btn-success">Logar</button>
+						<a href="cadastroUsuarioExterno.php" class="btn btn-warning btn-xs">Cadastre-se</a>
 					</form>
 				</div>
 			</div>

@@ -44,16 +44,26 @@
 
 		$res = $conexaoUsuario -> inserirUsuario($usuario);
 
-		//$banco -> fecharConexao($conexao);
-		if ($res == 1) {
-        	echo "<meta http-equiv='refresh' content='0; url=cadastroUsuario.php?cadastro=1'>";
-		} else {
-        	echo "<meta http-equiv='refresh' content='0; url=cadastroUsuario.php?cadastro=3'>";
+		if($tipo == 2){
+			if ($res == 1) {
+	        	echo "<meta http-equiv='refresh' content='0; url=login.php?cadastro=1'>";
+			} else {
+	        	echo "<meta http-equiv='refresh' content='0; url=cadastroUsuarioExterno.php?cadastro=3'>";
+			}
+		}else{
+			if ($res == 1) {
+	        	echo "<meta http-equiv='refresh' content='0; url=cadastroUsuario.php?cadastro=1'>";
+			} else {
+	        	echo "<meta http-equiv='refresh' content='0; url=cadastroUsuario.php?cadastro=3'>";
+			}
 		}
-		
 
 	}else{
-        echo "<meta http-equiv='refresh' content='0; url=cadastroUsuario.php?cadastro=2'>";
+		if($_POST['tipo'] == 2){
+	        echo "<meta http-equiv='refresh' content='0; url=cadastroUsuarioExterno.php?cadastro=2'>";
+		}else{
+			echo "<meta http-equiv='refresh' content='0; url=cadastroUsuario.php?cadastro=2'>";
+		}
 	}
 
 

@@ -1,6 +1,3 @@
-<?php
-	require 'session.php';
-?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -19,17 +16,9 @@
 
 	<!-- CSS -->
 	<link href="../css/style.css" rel="stylesheet">
-	<link href="../bootstrap/css/custom/animate.css" rel="stylesheet">
-	<link href="../bootstrap/css/custom/responsive.css" rel="stylesheet">
-
-
+	
 	<!-- JS -->
 	<script src="../js/funcoes.js" type="text/javascript"></script>
-
-	<!-- OWL Carousel -->
-	<link href="../js/owl-carousel/assets/owl.carousel.css" rel="stylesheet">
-	<link href="../js/owl-carousel/assets/owl.theme.css" rel="stylesheet">
-	<script src="../js/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
 
 	<title>Garçom Online</title>
 </head>
@@ -40,11 +29,11 @@
 		<?php
 			if(isset($_GET['cadastro'])){
 				if($_GET['cadastro']==1){
-					echo "<div class='alert alert-success' ><strong>Atenção!</strong> Cadastro Realizado com Sucesso!</div>";
+					echo "<div class='col-md-offset-3 col-offset-lg-3 col-md-6 col-lg-6 alert alert-success' align='center'><strong>Atenção!</strong> Cadastro Realizado com Sucesso!</div>";
 				}else if($_GET['cadastro']==2){
-					echo "<div class='alert alert-warning'><strong>Atenção!</strong> Todos os Campos devem ser preenchidos!</div>";
+					echo "<div class='col-md-offset-3 col-offset-lg-3 col-md-6 col-lg-6 alert alert-warning' align='center'><strong>Atenção!</strong> Todos os Campos devem ser preenchidos!</div>";
 				}else if($_GET['cadastro']==3){
-					echo "<div class='alert alert-warning'><strong>Atenção!</strong> Login ou Email já cadastrados!</div>";
+					echo "<div class='col-md-offset-3 col-offset-lg-3 col-md-6 col-lg-6 alert alert-warning' align='center'><strong>Atenção!</strong> Login ou Email já cadastrados!</div>";
 				}
 			}
 		?>
@@ -56,6 +45,7 @@
 
 			<div class="div-Cadastro col-xs-12 col-sm-12 col-md-12 col-lg-12" align="left">
 				<form action= "novoUsuario.php" method="post">
+					<input type="hidden" id="tipo" name="tipo" value="2">
 					<div class="form-group">
 					    <label for="nome">Nome</label>
 					    <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu login">
@@ -93,43 +83,12 @@
 						</select>
 					</div>
 	
-					<?php
-			            if ($_SESSION['tipo'] == 0) { //administrador
-			                echo "
-			                	<div class='form-group'>
-								    <label for='cpf'>CPF/CNPJ</label>
-								    <input type='text' class='form-control'  name='cpf' id='cpf' placeholder='Digite seu CPF'>
-								</div>
-								<div class='form-group'>
-									<label>Tipo de Usuário</label>
-									<select name='tipo' id='tipo' class='form-control'>
-									    <option value='1'>Mesa</option>
-									    <option value='2'>Cliente</option>
-									</select>
-								</div>";
-			            }else if ($_SESSION['tipo'] == 1) { //mesa
-			                echo "  	
-			                		<div class='form-group'>
-								    	<label for='cpf'>CNPJ</label>
-								    	<input type='text' class='form-control'  name='cpf' id='cpf' placeholder='Digite seu CNPJ'>
-									</div>";
-			            }else{ //cliente
-			                echo "
-			                    <div class='form-group'>
-								    <label for='cpf'>CPF</label>
-								    <input type='text' class='form-control'  name='cpf' id='cpf' placeholder='Digite seu CPF'>
-								</div>";
-			            }
-
-					?>
-								
-
 					<div class="div_BotaoVoltar col-xs-3 col-sm-3 col-md-3 col-lg-3" align="left">
-						<a href="administrador.php" class="btn btn-info"><span>Voltar</span></a>
+						<a href="login.php" class="btn btn-info"><span>Voltar</span></a>
 					</div>
 
 					<div class="div_BotaoAvancar col-xs-9 col-sm-9 col-md-9 col-lg-9" align="right">
-						<button type="submit" class="btn btn-success" id="cadastrarUsuario">Cadastrar</button>
+						<button type="submit" href="login.php" class="btn btn-success" id="cadastrarUsuario">Cadastrar</button>
 					</div>
 				</form>
 			</div>
