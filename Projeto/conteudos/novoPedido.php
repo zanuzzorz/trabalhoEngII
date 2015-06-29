@@ -24,13 +24,16 @@
   $comandaUsuario = $ConexaoComanda->buscarComandaPorUsuario($usuario[1]);
   $vlrproduto     = $_POST['idvalor'];
 
-  // echo $_POST['idproduto' ] ;
-  // echo $_POST['quantidade'] ;
 
-  if ($_POST['quantidade'] != "") {
-    $qtd        = $_POST['quantidade'];
+  $qtd        = $_POST['quantidade'];
+
+  if ($qtd == ""){
+    $qtd = 1;
+  }
+
+  if ($qtd > 0) {
+    
     $idProduto  = $_POST['idproduto' ];
-
     $valorPedido = $qtd * $vlrproduto;
 
     if ($comandaUsuario == NULL){
@@ -107,4 +110,6 @@
        }
     }
   }
+
+  echo "<meta http-equiv='refresh' content='0; url=inicio.php?cadastro=1'>";
 ?>

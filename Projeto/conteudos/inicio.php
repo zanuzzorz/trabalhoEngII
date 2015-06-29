@@ -44,6 +44,12 @@
 					}else if ($_SESSION['tipo'] == 2){//Cliente
 					 	echo "<a href='cliente.php' class='btn btn-primary pull-left'><span>Voltar</span></a>";
 					}
+
+					if(isset($_GET['cadastro'])){
+						if($_GET['cadastro']==1){
+							echo "<div class='col-md-offset-3 col-offset-lg-3 col-md-6 col-lg-6 alert alert-success' align='center'><strong>Atenção!</strong> Produto inserido com sucesso!</div>";
+						}
+					}
 				?>
 
 				<a href="#" class="btn btn-info pull-right"><span>Como Usar!</span></a>
@@ -64,20 +70,20 @@
     						}else{
     							$id = 0;
     						}
-                
+
                				require("../../ConexaoBanco/ConexaoBase.php");
                 			require("../../ConexaoBanco/ConexaoCategoriaProduto.php");
                 			require("../../Entidades/Categoria.php");
                 			$ConexaoCategoriaProduto = new ConexaoCategoriaProduto();
-                
+
                            	$result=$ConexaoCategoriaProduto->buscarTodos();
-                		                    	
+
 		                    while ($categoria = mysql_fetch_array($result)){
 		                    	$selected = "";
 		                    	if($categoria[0] == $id){$selected = "selected";}
     	                		echo "<option value=".$categoria[0]." $selected>" . $categoria[1] . "</option>";
                 			}
-                			             
+
                 		?>
 					</select>
 				</div>
@@ -177,10 +183,10 @@
 
 	<script type="text/javascript">
 		$( "#categoria" ).change(function() {
-			var id = $( "#categoria option:selected" ).val();	
+			var id = $( "#categoria option:selected" ).val();
 			location.href="inicio.php?cat="+id;
 		});
-	</script>	
+	</script>
 
 </body>
 </html>
