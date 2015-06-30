@@ -43,9 +43,9 @@
 		$ConexaoUsuario = new ConexaoUsuario();
 		$usuario=$ConexaoUsuario->buscarUsuarioID($_SESSION['usuario']);
 
-		$query = "SELECT pr.descricao, ip.quantidade, pr.preco, p.status FROM pedido p INNER JOIN item_pedido ip ON
-		p.id = ip.idpedido INNER JOIN comanda c ON c.id = p.idcomanda INNER JOIN produto pr ON pr.id = ip.idproduto WHERE " .  $usuario[1] .
-		" AND p.status = 5 ";
+		$query = "SELECT pr.descricao, ip.quantidade, pr.preco, p.status, ip.id FROM pedido p INNER JOIN item_pedido ip ON
+		p.id = ip.idpedido INNER JOIN comanda c ON c.id = p.idcomanda INNER JOIN produto pr ON pr.id = ip.idproduto INNER JOIN usuario u ON u.id = c.idusuario " .
+		"WHERE c.idusuario = " .  $usuario[1] . " AND p.status = 5 ";
 
         $result = $banco -> select($query);
         $result2 = $banco -> select($query);
@@ -63,7 +63,7 @@
 
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
 				
-				<table class="table table-striped">
+				<form method="POST"><table class="table table-striped">
 			      <thead>
 			        <tr class="success">
 			          <th>ITEM PEDIDO</th>
@@ -74,21 +74,50 @@
 			      </thead>
 			      <tbody>
 			      	<?php
-			      		$valortotal = 0;
+		      			$sql = "select valor from comanda where idusuario = ".$usuario[1]."";
+						$resultado = $banco -> select($sql);
+						$valortotal = mysql_fetch_array($resultado);
+						$valorAAtt = $valortotal[0];
 			      		while ($linha = mysql_fetch_assoc($result)) {
 							echo "<tr><td> " . $linha['descricao'] ."</td><td> " . $linha['quantidade'] ."</td><td> " . $linha['preco'] ."</td>
-							<td> <span class='glyphicon glyphicon-minus'></span> </td></tr>";
+							<td> <button class='glyphicon glyphicon-minus' name='botao' id='BotaoRemove' value='$linha[id]q$linha[quantidade]' type='submit'> </button></td></tr>";
+							
+						}
+						if(isset($_POST['botao'])){
+		                	$numero = $_POST['botao'];
+		                    $id = substr($numero , 0, strpos($numero,"q"));
+                    		$qtd = substr($numero , strpos($numero,"q")+1);
 
-							$valortotal = $valortotal + ($linha['preco'] * $linha['quantidade']);
-						}	
-			      	?>
+                    		$valoritem = "select valorunitario from item_pedido where id = ".$id."";
+							$resultado2 = $banco -> select($valoritem);
+							$valItem = mysql_fetch_array($resultado2);
+ 							$valorAAtt = $valortotal[0] - $valItem[0];
+
+							 $query = "update pedido as p inner join item_pedido as i on i.idpedido = p.id set p.valortotal = ".$valorAAtt." where i.id = $id ";
+								$query2 = "update comanda as c inner join pedido p on c.id = p.idcomanda inner join item_pedido as i on i.idpedido = p.id set c.valor = ".$valorAAtt." where i.id = $id ";				             			
+                    		if($qtd == 1){              			
+                    			$banco -> update($query2);
+								$banco -> update($query);								
+                    			$banco -> delete($id,'item_pedido');
+                    			echo"<script>alert('Produto removido do pedido!!');</script>";                    		}
+                    		else{
+                    			$banco -> update($query2);								
+								$banco -> update($query);								
+                    			$sql = "UPDATE garcom_online.item_pedido SET quantidade = (quantidade - 1) WHERE item_pedido.id = $id";
+                    			$banco -> update($sql);
+                    			echo"<script>alert('Produto removido do pedido!! Quantidade atualizada!');</script>";
+                    		}
+		                    echo "<meta http-equiv='refresh' content='0; URL=verPedido.php'>";
+		                }
+            		?>
+			      	
 			      </tbody>
-			    </table>
+			    </table></form>
 			</div>
 
 			<div class="div-valorPedido col-xs-12 col-sm-12 col-md-12 col-lg-12" align="right">
 				<?php
-					echo"<h4>Valor Total <span>R$ ". number_format($valortotal,2,",",".") ."</span></h4>";
+					echo"<h4>Valor Total <span>R$ ". number_format($valorAAtt,2,",",".") ."</span></h4>";
 				?>
 			</div>
 
@@ -100,10 +129,12 @@
 				<a href="inicio.php" class="btn btn-info"><span>Voltar</span></a>
 			</div>
 
-			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" align="right">
-				<a href="inicio.php" class="btn btn-success"><span>Finalizar Pedido</span></a>
-			</div>
-
+			<!--<form action= "atualizaStatusMesa.php?opcao=3" method="post">-->
+						
+				<div class="div_BotaoLiberar col-xs-9 col-sm-9 col-md-9 col-lg-9" align="right">
+						<button type="submit" class="btn btn-success" id="finalizarPedido">Finalizar Pedido</button>
+				</div>
+				<!--</form>	-->
 		</div>
 	</div>
 	
