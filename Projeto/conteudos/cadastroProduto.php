@@ -45,7 +45,9 @@
 							echo "<div class='col-md-offset-3 col-offset-lg-3 col-md-6 col-lg-6 alert alert-success' align='center'><strong>Atenção!</strong> Cadastro Realizado com Sucesso!</div>";
 						}else if($_GET['cadastro']==2){
 							echo "<div class='col-md-offset-3 col-offset-lg-3 col-md-6 col-lg-6 alert alert-warning' align='center'><strong>Atenção!</strong> Todos os Campos devem ser preenchidos !</div>";
-					}
+						}else if($_GET['cadastro']==3){
+							echo "<div class='col-md-offset-3 col-offset-lg-3 col-md-6 col-lg-6 alert alert-warning' align='center'><strong>Atenção!</strong> Produto Editado com Sucesso !</div>";
+						}
 				}
 			?>
 
@@ -54,28 +56,45 @@
 			</div>
 
 			<div class="div-Cadastro col-xs-12 col-sm-12 col-md-12 col-lg-12" align="left">
-				<form method="post" action="novoProduto.php">
-				    <div class="form-group">
-				   		<br />
-				    	<div class="input-group">
-			    			<input type="text" class="form-control" id="exampleInputBusca" placeholder="Busca produto...">
-					      	<span class="input-group-btn">
-					        	<button class="btn btn-default glyphicon glyphicon-search" type="button"></button>
-					      	</span>
-			    		</div>
-					</div>
-					<br />
+				<form action="novoProduto.php" method="post">
 					<div class="form-group">
-					    <label for="exampleInputNome">Nome</label>
-					    <input type="text" class="form-control" id="nomeProduto" name="nomeProduto" placeholder="Digite o nome do produto">
-					</div>
-					<br />
+						<label>Editar Produto</label>
+					    <select name="" id="produto" class="form-control">
+					    	<option value="">Selecione um Produto</option>
+					    	<?php
 
-			  		<div class="form-group">
+                   				require("../../ConexaoBanco/ConexaoBase.php");
+                    			require("../../ConexaoBanco/ConexaoProduto.php");
+                    			$ConexaoProduto = new Conexaoproduto();
+
+                               	$result=$ConexaoProduto->buscarTodos();
+                    		                    	
+			                    while ($produto = mysql_fetch_array($result)){
+									$str = "0[".$produto[0]."]0".
+			                    		   "1[".$produto[1]."]1".
+										   "2[".$produto[2]."]2".
+										   "3[".$produto[3]."]3".
+										   "4[".$produto[4]."]4".
+			                    		   "5[".$produto[5]."]5";
+        	                		echo "<option value=".$str.">" . $produto[4] . "</option>";
+                    			}
+
+                    		?>
+						</select>
+					</div>
+
+					<br \><br \>
+
+					<div class="form-group">
+					    <label for="InputNome">Nome</label>
+					    <input type="hidden" class="form-control" id="InputID" name="InputID" placeholder="" min="0" value="NULL">
+					    <input type="text" class="form-control" id="InputNome" name="InputNome" placeholder="" min="0" >
+					</div>
+					
+					<div class="form-group">
 			      		<label>Subcategoria</label>
-						<select name="subcategoria" id="subcategoria" class="form-control">
+						<select required name="subcategoria" id="subcategoria" class="form-control">
 							<?php
-								require("../../ConexaoBanco/ConexaoBase.php");
 								require("../../ConexaoBanco/ConexaoCategoriaProduto.php");
 								require("../../Entidades/Categoria.php");
 
@@ -91,41 +110,63 @@
 							?>
 			     		</select>
 
-				      	<div class="form-group" align="left">
+				
+					</div>
+					
+					<div class="form-group">
 							</br>
 				        	<input id="ativo" align="left" type="checkbox" name="ativo"> Produto Ativo?
 					    </div>
-					</div>
-
-			  		<br />
-				  	<div class="form-group" id="div_Preco">
-				          <label for="exampleInputPreco">Preço (R$)</label>
-				          <input type="text" class="form-control" name="precoProduto" id="precoProduto" >
-				  	</div>
-					<div class="form-group">
-					    <label for="exampleInputTempo">Tempo de Preparo</label>
-					    <input type="number" class="form-control" id="exampleInputTempo" min="0">
-					</div>
-					<br/>
+					
 					<div class="form-group" id="div_Ingredientes">
 						<label for="exampleInputPreco">Ingredientes</label>
 						<textarea rows="5" class="form-control" name="ingredientes" id="ingredientes" ></textarea>
 					</div>
+					
+					<div class="form-group" id="div_Preco">
+				          <label for="exampleInputPreco">Preço (R$)</label>
+				          <input type="text" class="form-control" name="precoProduto" id="precoProduto" >
+				  	</div>
+					
+					<br \><br \>
+					
 
-					<br />
+					<br \>
 
 					<div class="div_BotaoVoltar col-xs-3 col-sm-3 col-md-3 col-lg-3" align="left">
 						<a href="administrador.php" class="btn btn-info"><span>Voltar</span></a>
 					</div>
-
+				
+					
 					<div class="div_BotaoAvancar col-xs-9 col-sm-9 col-md-9 col-lg-9" align="right">
-						<button type="submit" id= "cadastrarProduto" class="btn btn-success">Cadastrar</button>
+						<button type="submit" class="btn btn-success">Confirmar</button>
 					</div>
-
 				</form>
-			</div>
-		</div>
+			</div>	
 	</div>
 
+<script type="text/javascript">
+	$( "#produto" ).change(function() {
+		var str = $( "#produto option:selected" ).val();
+		console.log( str );
+		
+
+		var ID = str.substring(str.indexOf("0[")+2, str.indexOf("]0"))
+		var nome = str.substring(str.indexOf("4[")+2, str.indexOf("]4"))
+		var preco = str.substring(str.indexOf("1[")+2, str.indexOf("]1"))
+		var ingredientes = str.substring(str.indexOf("3[")+2, str.indexOf("]3"))
+		var ativo = str.substring(str.indexOf("2[")+2, str.indexOf("]2"))
+		var idcategoria = str.substring(str.indexOf("5[")+2, str.indexOf("]5"))
+		
+		$("#InputID").val( ID );
+		$("#InputNome").val( nome );
+		$("#subcategoria").val( idcategoria );
+		$("#precoProduto").val( preco );
+		$("#ingredientes").val( ingredientes );
+		$("#ativo").val( 'checked' );
+		document.getElementById("ativo").checked = ativo;
+	});
+</script>	
+	
 </body>
 </html>

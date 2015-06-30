@@ -1,4 +1,6 @@
 <?php
+  require 'session.php';
+  require 'sessionAdmin.php';
   require("../../ConexaoBanco/ConexaoBase.php");
   require("../../ConexaoBanco/ConexaoUsuario.php");
   $banco = new ConexaoBase();

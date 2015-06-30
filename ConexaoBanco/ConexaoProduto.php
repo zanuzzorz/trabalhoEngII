@@ -1,4 +1,5 @@
 <?php
+   require("../../Entidades/Produto.php");
    class ConexaoProduto extends ConexaoBase {
 	public function inserirProduto($produto){
       $preco        = $produto->Preco;
@@ -38,6 +39,12 @@
       $Resultado = parent::select($Sql);
       return $Resultado;
     }
+	
+	public function atualizaProduto($produto){
+      		$sql = "UPDATE produto SET preco='$produto->Preco', ativo='$produto->Situacao', ingredientes='$produto->Ingredientes', descricao='$produto->Descricao', idcategoria='$produto->Categoria' WHERE id='$produto->ID' ";
+      		$Resultado = parent::update($sql);
+			return $Resultado;
+	}
 
    }
 ?>
