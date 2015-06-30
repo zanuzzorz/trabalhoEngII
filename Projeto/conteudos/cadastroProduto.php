@@ -46,7 +46,7 @@
 						}else if($_GET['cadastro']==2){
 							echo "<div class='col-md-offset-3 col-offset-lg-3 col-md-6 col-lg-6 alert alert-warning' align='center'><strong>Atenção!</strong> Todos os Campos devem ser preenchidos !</div>";
 						}else if($_GET['cadastro']==3){
-							echo "<div class='col-md-offset-3 col-offset-lg-3 col-md-6 col-lg-6 alert alert-warning' align='center'><strong>Atenção!</strong> Produto Editado com Sucesso !</div>";
+							echo "<div class='col-md-offset-3 col-offset-lg-3 col-md-6 col-lg-6 alert alert-success' align='center'><strong>Atenção!</strong> Produto Editado com Sucesso !</div>";
 						}
 				}
 			?>
@@ -70,11 +70,13 @@
                                	$result=$ConexaoProduto->buscarTodos();
                     		                    	
 			                    while ($produto = mysql_fetch_array($result)){
+			                    	$ingredi = str_replace(' ', '_._', $produto[3]);
+			                    	$desc = str_replace(' ', '_._', $produto[4]);
 									$str = "0[".$produto[0]."]0".
 			                    		   "1[".$produto[1]."]1".
 										   "2[".$produto[2]."]2".
-										   "3[".$produto[3]."]3".
-										   "4[".$produto[4]."]4".
+										   "3[".$ingredi."]3".
+										   "4[".$desc."]4".
 			                    		   "5[".$produto[5]."]5";
         	                		echo "<option value=".$str.">" . $produto[4] . "</option>";
                     			}
@@ -83,7 +85,7 @@
 						</select>
 					</div>
 
-					<br \><br \>
+					<br><br>
 
 					<div class="form-group">
 					    <label for="InputNome">Nome</label>
@@ -148,8 +150,6 @@
 <script type="text/javascript">
 	$( "#produto" ).change(function() {
 		var str = $( "#produto option:selected" ).val();
-		console.log( str );
-		
 
 		var ID = str.substring(str.indexOf("0[")+2, str.indexOf("]0"))
 		var nome = str.substring(str.indexOf("4[")+2, str.indexOf("]4"))
@@ -157,12 +157,12 @@
 		var ingredientes = str.substring(str.indexOf("3[")+2, str.indexOf("]3"))
 		var ativo = str.substring(str.indexOf("2[")+2, str.indexOf("]2"))
 		var idcategoria = str.substring(str.indexOf("5[")+2, str.indexOf("]5"))
-		
+
 		$("#InputID").val( ID );
-		$("#InputNome").val( nome );
+		$("#InputNome").val(nome.replace(/_._/g, " ") );
 		$("#subcategoria").val( idcategoria );
 		$("#precoProduto").val( preco );
-		$("#ingredientes").val( ingredientes );
+		$("#ingredientes").val( ingredientes.replace(/_._/g, " ") );
 		$("#ativo").val( 'checked' );
 		document.getElementById("ativo").checked = ativo;
 	});

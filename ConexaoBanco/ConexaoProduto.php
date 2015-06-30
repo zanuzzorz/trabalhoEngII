@@ -1,7 +1,7 @@
 <?php
-   require("../../Entidades/Produto.php");
-   class ConexaoProduto extends ConexaoBase {
-	public function inserirProduto($produto){
+  class ConexaoProduto extends ConexaoBase {
+    
+	  public function inserirProduto($produto){
       $preco        = $produto->Preco;
       $situacao     = $produto->Situacao;
       $ingredientes = $produto->Ingredientes ;
@@ -12,14 +12,8 @@
 	    return parent::insert($Sql);
    	}
 
-  	//A função atualizar será nesse estilo
-  	/*public function atualizarProduto($obj){
-     	   $Sql="update produto set numero ='" . $obj->get_name() . "', complemento ='" . $obj->get_phone() . "', estado ='" . $obj->get_email() . "',";
-     	   $Sql.="bairro ='" . $obj->get_street() . "', rua =" . $obj->get_number();
-     	   return parent::update($Sql);
-  	}*/
 
-  	//A função buscarTodos será nesse estilo
+  	//Busca todos os Produtos
     public function buscarTodos(){
       $Sql = "SELECT * FROM produto";
       $Resultado = parent::select($Sql);
@@ -33,18 +27,19 @@
       return $Resultado;
     }
 
-    //A função buscarTodosCategoria será nesse estilo
+    //Busca por todas as categorias
     public function buscarTodosCategoria($id){
       $Sql = "SELECT * FROM produto WHERE (produto.idcategoria =".$id.") or ( ".$id." = 0)";
       $Resultado = parent::select($Sql);
       return $Resultado;
     }
 	
-	public function atualizaProduto($produto){
-      		$sql = "UPDATE produto SET preco='$produto->Preco', ativo='$produto->Situacao', ingredientes='$produto->Ingredientes', descricao='$produto->Descricao', idcategoria='$produto->Categoria' WHERE id='$produto->ID' ";
-      		$Resultado = parent::update($sql);
+    //Update na tabela Produtos
+	  public function atualizaProduto($produto){
+      $sql = "UPDATE produto SET preco='$produto->Preco', ativo='$produto->Situacao', ingredientes='$produto->Ingredientes', descricao='$produto->Descricao', idcategoria='$produto->Categoria' WHERE id='$produto->ID' ";
+      $Resultado = parent::update($sql);
 			return $Resultado;
-	}
+	  }
 
    }
 ?>

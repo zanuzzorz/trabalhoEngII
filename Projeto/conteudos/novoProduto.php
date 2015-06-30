@@ -1,6 +1,7 @@
 <?php
 	require("../../ConexaoBanco/ConexaoBase.php");
     require("../../ConexaoBanco/ConexaoProduto.php");
+    require("../../Entidades/Produto.php");
 
     $conexaoProduto = new ConexaoProduto();
 
