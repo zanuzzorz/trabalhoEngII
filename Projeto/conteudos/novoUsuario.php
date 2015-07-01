@@ -23,7 +23,6 @@
 		$saldo =  0;
 		$status = 0;
 
-		
 		$tipo = $_POST['tipo'];
 
 		$usuario = new \Entidades\Usuario();
@@ -44,9 +43,9 @@
 
 		$res = $conexaoUsuario -> inserirUsuario($usuario);
 
-		if($tipo == 2){
+		if(!isset($_GET['user'])){
 			if ($res == 1) {
-	        	echo "<meta http-equiv='refresh' content='0; url=login.php?cadastro=1'>";
+	       		echo "<meta http-equiv='refresh' content='0; url=login.php?cadastro=1'>";
 			} else {
 	        	echo "<meta http-equiv='refresh' content='0; url=cadastroUsuarioExterno.php?cadastro=3'>";
 			}

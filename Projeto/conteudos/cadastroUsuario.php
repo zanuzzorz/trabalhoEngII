@@ -35,7 +35,7 @@
 </head>
 <body>
 	<div class="container">
-		<div class="div_CadastroTotal col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<div class="div_CadastroTotal col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
 
 		<?php
 			if(isset($_GET['cadastro'])){
@@ -55,7 +55,7 @@
 
 
 			<div class="div-Cadastro col-xs-12 col-sm-12 col-md-12 col-lg-12" align="left">
-				<form action= "novoUsuario.php" method="post">
+				<form action= "novoUsuario.php?user=0" method="post">
 					<div class="form-group">
 					    <label for="nome">Nome</label>
 					    <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu login">
