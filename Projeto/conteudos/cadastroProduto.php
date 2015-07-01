@@ -71,6 +71,8 @@
                     		                    	
 			                    while ($produto = mysql_fetch_array($result)){
 			                    	$ingredi = str_replace(' ', '_._', $produto[3]);
+									$ingredi = str_replace("\r", "", $ingredi);
+									$ingredi = str_replace("\n", "", $ingredi);
 			                    	$desc = str_replace(' ', '_._', $produto[4]);
 									$str = "0[".$produto[0]."]0".
 			                    		   "1[".$produto[1]."]1".
