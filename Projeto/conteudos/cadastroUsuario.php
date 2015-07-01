@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+	<link rel="icon" href="../imagens/favicon.png" />
+
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,8 +16,8 @@
 	
 
 	<!-- jQuery -->
-	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="../js/jquery-1.11.3.min.js" type="text/javascript"></script>
+	<script src="../js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
 
 	<!-- CSS -->
 	<link href="../css/style.css" rel="stylesheet">

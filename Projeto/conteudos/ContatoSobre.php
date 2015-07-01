@@ -29,26 +29,22 @@
 				<img src="../imagens/logo/01.png" class="img-responsive img_Logo">
 			</div>
 			<div class="div-RecuperaSenha col-xs-12 col-sm-12 col-md-12 col-lg-12" align="left">
-				<form method="post" action="email.php">
-					<?php
-						session_start();
-						if(isset($_GET['error'])){
-							if($_GET['error']==1){
-								echo "<div class='alert alert-warning'><strong>Atenção!</strong> Ocorreu um erro ao mandar o email!</div>";
-							}else if($_GET['error']==2){
-								echo "<div class='alert alert-danger'><strong>Atenção!</strong> Email incorreto!</div>";
-							}
-						}
-					?>
-			  		<div class="form-group">
-					    <label for="imputEmail">E-mail</label>
-					    <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu e-mail para recuperar a senha">
+				<form>
+					<div class="form-group">
+					    <label >Sobre nós:</label> Um texto qualquer falando sobre o estabelecimento!
 					</div>
+			  		<div class="form-group">
+					    <label >Endereço:</label> Rua Paçoquinha - 22E - Chapecó - SC
+					</div>
+					<div class="form-group">
+					    <label >Telefone:</label> (49) 1111-1111
+					</div>
+					<div class="form-group">
+					    <label >Email:</label> teste@teste.com
+					</div>
+
 					<div class="div_BotaoVoltar col-xs-3 col-sm-3 col-md-3 col-lg-3" align="left">
 						<a href="login.php" class="btn btn-info"><span>Voltar</span></a>
-					</div>
-					<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" align="right">
-						<button type="submit" class="btn btn-success">Gerar</button>
 					</div>
 				</form>
 			</div>  
