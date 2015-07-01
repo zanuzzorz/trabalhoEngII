@@ -70,6 +70,7 @@
 			                    		   "1[".$usuario[1]."]1".
 			                    		   "6[".$usuario[6]."]6".
 			                    		   "5[".$usuario[5]."]5";
+			                    	$str = str_replace(' ', '_._', $str);
         	                		echo "<option value=".$str.">" . $usuario[1] . "</option>";
                     			}
 
@@ -119,6 +120,7 @@
 <script type="text/javascript">
 	$( "#usuario" ).change(function() {
 		var str = $( "#usuario option:selected" ).val();
+		str = str.replace(/_._/g, ' ');
 
 		var ID = str.substring(str.indexOf("0[")+2, str.indexOf("]0"))
 		var nome = str.substring(str.indexOf("1[")+2, str.indexOf("]1"))
