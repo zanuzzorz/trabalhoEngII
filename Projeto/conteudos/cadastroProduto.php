@@ -163,8 +163,8 @@
 		$("#subcategoria").val( idcategoria );
 		$("#precoProduto").val( preco );
 		$("#ingredientes").val( ingredientes.replace(/_._/g, " ") );
-		$("#ativo").val( 'checked' );
-		document.getElementById("ativo").checked = ativo;
+		if (ativo == 1)  document.getElementById("ativo").checked = true;
+		else document.getElementById("ativo").checked = false;
 	});
 </script>	
 	
