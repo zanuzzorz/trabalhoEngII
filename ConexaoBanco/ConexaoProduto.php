@@ -29,7 +29,7 @@
 
     //Busca por todas as categorias
     public function buscarTodosCategoria($id){
-      $Sql = "SELECT * FROM produto WHERE (produto.idcategoria =".$id.") or ( ".$id." = 0)";
+      $Sql = "SELECT * FROM produto WHERE ativo = 1 AND ((produto.idcategoria =".$id.") OR ( ".$id." = 0))";
       $Resultado = parent::select($Sql);
       return $Resultado;
     }
