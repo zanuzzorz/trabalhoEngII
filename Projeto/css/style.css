@@ -313,6 +313,14 @@ body {
 	}
 }
 
+@media only screen and (max-width: 685px) {
+
+	.div_Administrador .btn-maior {
+		font-size: 14px !important;
+	}
+
+}
+
 @media only screen and (min-width: 1px) and (max-width: 991px) {
 	.div-RecuperaSenha,
 	.div-Login, 

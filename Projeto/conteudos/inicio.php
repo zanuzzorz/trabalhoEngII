@@ -90,13 +90,13 @@
 			</div>
 
 			<div class="div_InicioGaleria col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
-				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 hidden-xs hidden-sm ">
 			    	<img src="../imagens/produtos/x-salada/1.jpg" class="img-responsive">
 			    </div>
-			     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+			     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 hidden-xs hidden-sm ">
 			    	<img src="../imagens/produtos/x-salada/2.jpg" class="img-responsive">
 			    </div>
-			     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+			     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 hidden-xs hidden-sm ">
 			    	<img src="../imagens/produtos/x-salada/3.jpg" class="img-responsive">
 		    	</div>
 		    </div>
@@ -129,11 +129,10 @@
 							    		<h3><strong>Ingredientes:</strong> ". $linha[3] ."</h3>
 
 										<div class='div_InicioPedido col-xs-12 col-sm-12 col-md-12 col-lg-12' align='center'>
-											<div class='col-xs-8 col-sm-8 col-md-8 col-lg-8 form-group' align='right' class=''>
+											<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group' align='center' class=''>
 												<input type='number' class='form-control form_Quantidade'id='quantidade' name='quantidade' placeholder='Quantidade'>
 											</div>
 
-											<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4' align='right'></div>
 												<div class='div-AddPedido col-xs-12 col-sm-12 col-md-12 col-lg-12' align='center'>
 													<button type='submit' id= 'cadastrarPedido' class='btn btn-lg btn-success'>ADICIONAR AO PEDIDO</button>
 												</div>
@@ -150,11 +149,10 @@
 										<h2>Valor: <strong> R$". $linha[1] ."</strong></h2>
 
 										<div class='div_InicioPedido col-xs-12 col-sm-12 col-md-12 col-lg-12' align='center'>
-											<div class='col-xs-8 col-sm-8 col-md-8 col-lg-8 form-group' align='right' class=''>
+											<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group' align='center' class=''>
 												<input type='number' class='form-control form_Quantidade'id='quantidade' name='quantidade' placeholder='Quantidade'>
 											</div>
 
-											<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4' align='right'></div>
 												<div class='div-AddPedido col-xs-12 col-sm-12 col-md-12 col-lg-12' align='center'>
 													<button type='submit' id= 'cadastrarPedido' class='btn btn-lg btn-success'>ADICIONAR AO PEDIDO</button>
 												</div>
