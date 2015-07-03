@@ -29,7 +29,8 @@
 	<body>
 		<div class="container">
 			<div class="div_LoginTotal col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<a href="cadastroUsuarioExterno.php" class="btn btn-primary pull-right">Cadastre-se</a>
+				<a href="ContatoSobre.php" class="btn btn-primary pull-left">Sobre</a>
+				<a href="cadastroUsuarioExterno.php" class="btn btn-primary pull-right">Cadastre-se</a> 
 
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
 					<img src="../imagens/logo/01.png" class="img-responsive img_Logo">
@@ -80,9 +81,7 @@
 						<div class="form-group">
 						    <button type="submit" class="btn btn-success">Logar</button>
 						</div>
-						<div class="form-group" align="center">
-							<a href="ContatoSobre.php">Contato/Sobre</a>
-						</div>
+						
 					</form>
 				</div>
 			</div>
