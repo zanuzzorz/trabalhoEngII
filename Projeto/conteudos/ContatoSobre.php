@@ -70,7 +70,7 @@
 						</div>
 				  		<div class="form-group">
 						    <label >Nomes:</label> Douglas Borges; João Gehlen; Laurivan Sareta; Lucas Kranz; Maicon Ghidolin; Mateus Trebien; Natan J. Mai;
-						     Ricardo Zanuzzo; Rogelho Schmidt; Vinicius Chimello;
+						     Ricardo Zanuzzo; Rogério Schmidt; Vinicius Chimello;
 						</div>
 						<div class="form-group">
 						    <label >Email:</label> garcomonline2@gmail.com
