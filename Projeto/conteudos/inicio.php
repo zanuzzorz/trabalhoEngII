@@ -54,7 +54,7 @@
 					}
 				?>
 
-				<a href="#" class="btn btn-info pull-right"><span>Como Usar!</span></a>
+				<a href="../../Documentação/Documentação do Usuário/Documentação do Usuário.pdf" target="_blank" class="btn btn-info pull-right"><span>Como Usar!</span></a>
 			</div>
 
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
