@@ -3,6 +3,7 @@
 	require 'sessionMesa.php';
 	require("../../ConexaoBanco/ConexaoBase.php");
 	require("../../ConexaoBanco/ConexaoUsuario.php");
+	require("../../ConexaoBanco/ConexaoPedido.php");
 	
 	// 1 - Para ocupar mesa
 	if($_GET['opcao'] == 1) {
@@ -18,6 +19,14 @@
 		$conexaoUsuario = new ConexaoUsuario();
 		$user = $conexaoUsuario->atualizaStatusMesa($mesa, "0");
 		header("Location:mesasDisponiveisAdm.php"); 
+	}
+
+	//2 - Atualizar Pedido
+	if ($_GET['opcao'] == 3) {
+		$id = $_GET['id'];
+		$conexaoPedido = new ConexaoPedido();
+		$user = $conexaoPedido->AtualizaStatusPedido($id, "0");
+		header("Location:acompanharPedido.php"); 
 	}
 	
 ?>

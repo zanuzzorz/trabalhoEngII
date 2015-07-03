@@ -44,5 +44,11 @@
 			if($data) return mysql_fetch_array($data);
 			else return NULL;
 		}
+
+			//Atualiza status do pedido
+		public function AtualizaStatusPedido($id,$status){
+      		$sql="UPDATE pedido set status ='" .$status. "'WHERE pedido.id =".$id."";
+      		return parent::update($sql);
+		}
 	}
 ?>

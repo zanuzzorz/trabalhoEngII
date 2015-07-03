@@ -52,6 +52,11 @@
         $result = $banco -> select($query);
         $result2 = $banco -> select($query);
 
+
+        $idPedidoV = "select p.id from pedido p inner join item_pedido i on p.id = i.idpedido inner join comanda c on c.id = p.idcomanda where c.idusuario = " .  $usuario[1] . " ";
+		$resultado3 = $banco -> select($idPedidoV);
+		$idP = mysql_fetch_array($resultado3);
+		
         if (mysql_num_rows($result) == 0) {
             echo"<script>alert('Carrinho Vazio!!');</script>";            
         }
@@ -131,12 +136,12 @@
 				<a href="inicio.php" class="btn btn-info"><span>Voltar</span></a>
 			</div>
 
-			<!--<form action= "atualizaStatusMesa.php?opcao=3" method="post">-->
+			<?php echo '<form action= "atualizaStatusMesa.php?opcao=3&id=',$idP[0],'" method="post">'; ?>
 						
 				<div class="div_BotaoLiberar col-xs-9 col-sm-9 col-md-9 col-lg-9" align="right">
 						<button type="submit" class="btn btn-success" id="finalizarPedido">Finalizar Pedido</button>
 				</div>
-				<!--</form>	-->
+				</form>
 		</div>
 	</div>
 	
