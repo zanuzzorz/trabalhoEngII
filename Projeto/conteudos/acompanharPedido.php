@@ -102,13 +102,20 @@
 					<!--<p>Seu Pedido será finalizado em <strong>00:23m</strong></p>-->
 				</div>
 
-	            <div class="row">
-	                <div class="div_BotaoVoltar col-xs-3 col-sm-3 col-md-3 col-lg-3" align="left">
-					    <a href="cliente.php" class="btn btn-info"><span>Voltar</span></a>
-				     </div>
+
+				<div class="row">
+		            <div class="div_BotaoVoltar col-xs-3 col-sm-3 col-md-3 col-lg-3" align="left">
+			            <?php
+			              if($_SESSION['tipo'] == 0){ //Administrador
+			                echo "<a href='administrador.php' class='btn btn-info pull-left'><span>Voltar</span></a>";
+			              }else if ($_SESSION['tipo'] == 1){//Mesa
+			                echo "<a href='inicio.php' class='btn btn-info pull-left'><span>Voltar</span></a>";
+			              }else if ($_SESSION['tipo'] == 2){//Cliente
+			                echo "<a href='cliente.php' class='btn btn-info pull-left'><span>Voltar</span></a>";
+			              }
+			            ?>
+		         	</div>
 	            </div>
-
-
 
 			</div>
 
