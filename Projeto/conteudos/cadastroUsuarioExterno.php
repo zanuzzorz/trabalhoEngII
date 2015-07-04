@@ -50,7 +50,7 @@
 					<input type="hidden" id="tipo" name="tipo" value="2">
 					<div class="form-group">
 					    <label for="nome">Nome</label>
-					    <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu login">
+					    <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu nome">
 					</div>
 					<div class="form-group">
 					    <label for="nome">CPF</label>

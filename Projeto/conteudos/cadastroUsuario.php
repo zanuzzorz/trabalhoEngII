@@ -60,7 +60,7 @@
 				<form action= "novoUsuario.php?user=0" method="post">
 					<div class="form-group">
 					    <label for="nome">Nome</label>
-					    <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu login">
+					    <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu nome">
 					</div>
 					<div class="form-group">
 					    <label for="email">Email</label>
