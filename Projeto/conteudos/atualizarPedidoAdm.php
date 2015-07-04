@@ -29,6 +29,10 @@
   if ($statusNovo == 3 || $statusNovo == 4){
     $novoValorComanda = $comanda[1] - $valorPedido[0];
     $ConexaoComanda->AtualizarComanda($comanda[0], $novoValorComanda);
+    if ($novoValorComanda <= 0) {
+      $ConexaoComanda->AtualizarStatusComanda($comanda[0], 1);
+      $ConexaoComanda->AtualizarComanda($comanda[0], 0);
+    }
   }
 
   echo "<meta http-equiv='refresh' content='0; url=verPedidoAdmin.php?cadastro=1'>";
