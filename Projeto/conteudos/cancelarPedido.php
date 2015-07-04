@@ -8,21 +8,25 @@
   require("../../ConexaoBanco/ConexaoUsuario.php");
   require("../../ConexaoBanco/ConexaoProduto.php");
   require("../../ConexaoBanco/ConexaoItemPedido.php");
-
   require("../../Entidades/Usuario.php");
   require 'session.php';
+
+
 
   $banco          = new ConexaoBase();
   $conexao        = $banco -> abrirConexao();
   $ConexaoPedido  = new ConexaoPedido();
   $ConexaoComanda = new ConexaoComanda();
-  $idPedido       = $_POST['idpedido'];
-  $idUsuario      = $_POST['idusuario'];
-  $statusNovo     = $_POST['statusPedido'];
+  $ConexaoUsuario = new ConexaoUsuario();
+  $usuario        = $ConexaoUsuario->buscarUsuarioID($_SESSION['usuario']);
+  $idUsuario      = $usuario[1];
+  $idComanda      = $ConexaoComanda->buscarComandaPorUsuario($idUsuario);
+  $idPedido       = $ConexaoPedido->buscarPedidoPorComanda($idComanda[0]);
+  $statusNovo     = 4;
 
 
-  $ConexaoPedido->AtualizarEstado($idPedido, $statusNovo);
-  $valorPedido    = $ConexaoPedido->buscarValorAtualPedido($idPedido);
+  $ConexaoPedido->AtualizarEstado($idPedido[0], $statusNovo);
+  $valorPedido    = $ConexaoPedido->buscarValorAtualPedido($idPedido[0]);
   $comanda        = $ConexaoComanda->buscarComandaPorUsuario($idUsuario);
 
 
@@ -35,5 +39,6 @@
     }
   }
 
-  echo "<meta http-equiv='refresh' content='0; url=verPedidoAdmin.php?cadastro=1'>";
+
+  echo "<meta http-equiv='refresh' content='0; url=cliente.php?cancelado=1'>";
 ?>

@@ -32,6 +32,15 @@
     <div class=" animated zoomIn" align="center">
         <div class="container" >
             <div class="div_InicioTotal col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <?php
+                    if(isset($_GET['cancelado'])){
+                        if($_GET['cancelado']==1){
+                            echo "<div class='col-md-offset-3 col-offset-lg-3 col-md-6 col-lg-6 alert alert-warning' align='center'><strong>Atenção!</strong> Seu Pedido Foi Cancelado!</div>";
+                        }else if($_GET['cancelado']==2){
+                            echo "<div class='col-md-offset-3 col-offset-lg-3 col-md-6 col-lg-6 alert alert-danger' align='center'><strong>Atenção!</strong> Erro ao cancelar o Pedido !</div>";
+                      }
+                    }
+                ?>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
                     <a href="login.php?logout=1" class="btn btn-warning pull-right"><span>Sair</span></a>
                 </div>
@@ -60,7 +69,7 @@
 
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <div class="row" >
-                        <a href="" class="btn  btn-menor btn-primary"><span>Cancelar Pedido</span></a>
+                        <a href="cancelarPedido.php" class="btn  btn-menor btn-primary"><span>Cancelar Pedido</span></a>
                     </div>       
                 </div>
 

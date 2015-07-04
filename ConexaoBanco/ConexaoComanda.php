@@ -18,6 +18,10 @@
 			return parent::update($sql);
 		}
 
+		public function AtualizarStatusComanda($idComanda, $status){
+			$sql="UPDATE comanda set status ='" .$status. "'WHERE comanda.id =".$idComanda."";
+			return parent::update($sql);
+		}
 
 		public function buscarIdComandaPorUsuario($usuario){
 			$Sql = "SELECT id FROM comanda WHERE idusuario =".$usuario."";
