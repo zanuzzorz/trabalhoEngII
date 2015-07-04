@@ -15,7 +15,7 @@
 	<!-- BOOTSTRAP -->
 	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<script src="../bootstrap/js/bootstrap.js" type="text/javascript"></script>
-	
+
 
 	<!-- jQuery -->
 	<script src="../js/jquery-1.11.3.min.js" type="text/javascript"></script>
@@ -56,9 +56,9 @@
         $idPedidoV = "select p.id from pedido p inner join item_pedido i on p.id = i.idpedido inner join comanda c on c.id = p.idcomanda where c.idusuario = " .  $usuario[1] . " ";
 		$resultado3 = $banco -> select($idPedidoV);
 		$idP = mysql_fetch_array($resultado3);
-		
+
         if (mysql_num_rows($result) == 0) {
-            echo"<script>alert('Carrinho Vazio!!');</script>";            
+            echo"<script>alert('Carrinho Vazio!!');</script>";
         }
   	?>
 	<div class="container">
@@ -69,7 +69,7 @@
 			</div>
 
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
-				
+
 				<form method="POST"><table class="table table-striped">
 			      <thead>
 			        <tr class="success">
@@ -88,7 +88,7 @@
 			      		while ($linha = mysql_fetch_assoc($result)) {
 							echo "<tr><td> " . $linha['descricao'] ."</td><td> " . $linha['quantidade'] ."</td><td> " . $linha['preco'] ."</td>
 							<td> <button class='glyphicon glyphicon-minus' name='botao' id='BotaoRemove' value='$linha[id]q$linha[quantidade]' type='submit'> </button></td></tr>";
-							
+
 						}
 						if(isset($_POST['botao'])){
 		                	$numero = $_POST['botao'];
@@ -101,15 +101,15 @@
  							$valorAAtt = $valortotal[0] - $valItem[0];
 
 							 $query = "update pedido as p inner join item_pedido as i on i.idpedido = p.id set p.valortotal = ".$valorAAtt." where i.id = $id ";
-								$query2 = "update comanda as c inner join pedido p on c.id = p.idcomanda inner join item_pedido as i on i.idpedido = p.id set c.valor = ".$valorAAtt." where i.id = $id ";				             			
-                    		if($qtd == 1){              			
+								$query2 = "update comanda as c inner join pedido p on c.id = p.idcomanda inner join item_pedido as i on i.idpedido = p.id set c.valor = ".$valorAAtt." where i.id = $id ";
+                    		if($qtd == 1){
                     			$banco -> update($query2);
-								$banco -> update($query);								
+								$banco -> update($query);
                     			$banco -> delete($id,'item_pedido');
                     			echo"<script>alert('Produto removido do pedido!!');</script>";                    		}
                     		else{
-                    			$banco -> update($query2);								
-								$banco -> update($query);								
+                    			$banco -> update($query2);
+								$banco -> update($query);
                     			$sql = "UPDATE garcom_online.item_pedido SET quantidade = (quantidade - 1) WHERE item_pedido.id = $id";
                     			$banco -> update($sql);
                     			echo"<script>alert('Produto removido do pedido!! Quantidade atualizada!');</script>";
@@ -117,7 +117,7 @@
 		                    echo "<meta http-equiv='refresh' content='0; URL=verPedido.php'>";
 		                }
             		?>
-			      	
+
 			      </tbody>
 			    </table></form>
 			</div>
@@ -128,22 +128,18 @@
 				?>
 			</div>
 
-			<div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
-				<p>Seu Pedido será finalizado em <strong>00:23m</strong></p>
-			</div>
-
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" align="left">
 				<a href="inicio.php" class="btn btn-info"><span>Voltar</span></a>
 			</div>
 
 			<?php echo '<form action= "atualizaStatusMesa.php?opcao=3&id=',$idP[0],'" method="post">'; ?>
-						
+
 				<div class="div_BotaoLiberar col-xs-9 col-sm-9 col-md-9 col-lg-9" align="right">
 						<button type="submit" class="btn btn-success" id="finalizarPedido">Finalizar Pedido</button>
 				</div>
 				</form>
 		</div>
 	</div>
-	
+
 </body>
 </html>

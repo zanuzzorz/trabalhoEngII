@@ -32,7 +32,7 @@
   }
 
   if ($qtd > 0) {
-    
+
     $idProduto  = $_POST['idproduto' ];
     $valorPedido = $qtd * $vlrproduto;
 
@@ -68,7 +68,8 @@
     else {
       //  echo "002";
        $pedidoComanda  = $ConexaoPedido->buscarPedidoPorComanda($comandaUsuario[0]);
-
+       echo "00002";
+       echo $pedidoComanda[0];
        /* Tem comanda mas não tem pedido */
        if ($pedidoComanda == NULL){
           $novoPedido   = new \Entidades\Pedido();

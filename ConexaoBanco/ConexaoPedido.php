@@ -29,6 +29,11 @@
 			return parent::update($sql);
 		}
 
+		public function AtualizarEstado($idPedido, $status){
+			$sql="UPDATE pedido set status ='" .$status. "'WHERE pedido.id =".$idPedido."";
+			return parent::update($sql);
+		}
+
 		public function buscarIdPedidoPorComanda($comanda){
 			$Sql = "SELECT id FROM pedido WHERE idcomanda =".$comanda." and
 			 				status = 5";
@@ -39,7 +44,7 @@
 		}
 
 		public function buscarPedidoPorComanda($id){
-			$Sql = "SELECT * FROM pedido WHERE idcomanda =".$id."";
+			$Sql = "SELECT * FROM pedido p WHERE p.idcomanda =".$id." and p.status in (0,1,2,5)";
 			$data = parent::select($Sql);
 			if($data) return mysql_fetch_array($data);
 			else return NULL;
@@ -47,8 +52,8 @@
 
 			//Atualiza status do pedido
 		public function AtualizaStatusPedido($id,$status){
-      		$sql="UPDATE pedido set status ='" .$status. "'WHERE pedido.id =".$id."";
-      		return parent::update($sql);
+    		$sql="UPDATE pedido set status ='" .$status. "'WHERE pedido.id =".$id."";
+    		return parent::update($sql);
 		}
 	}
 ?>

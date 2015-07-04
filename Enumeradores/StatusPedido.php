@@ -1,16 +1,17 @@
 <?php
 
 	namespace Enumerators;
-	
+
 	 class StatusPedido {
-		
+
 		const
 			Aguardando = 0
 			EmPreparo = 1
 			SendoEntregue = 2
 			Finalizado = 3
 			Cancelado = 4
-			
+			AguardandoFechamento = 5
+
 		function retornaStatusMesa($valor){
 			if($valor == 0){
 				return "Aguardando";

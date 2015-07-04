@@ -1,5 +1,7 @@
 <?php
 	require 'session.php';
+	require("../../ConexaoBanco/ConexaoBase.php");
+	require("../../ConexaoBanco/ConexaoUsuario.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -13,7 +15,7 @@
 	<!-- BOOTSTRAP -->
 	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<script src="../bootstrap/js/bootstrap.js" type="text/javascript"></script>
-	
+
 
 	<!-- jQuery -->
 	<script src="../js/jquery-1.11.3.min.js" type="text/javascript"></script>
@@ -37,6 +39,21 @@
 	<title>Garçom Online</title>
 </head>
 <body>
+	<?php
+		$banco = new ConexaoBase();
+		$conexao = $banco -> abrirConexao();
+		$ConexaoUsuario = new ConexaoUsuario();
+
+		$query = "SELECT p.id, u.nome, p.status, p.valortotal FROM pedido p
+		INNER JOIN comanda c ON c.id = p.idcomanda
+		INNER JOIN usuario u ON u.id = c.idusuario WHERE p.status in (0,1,2)";
+
+        $result = $banco -> select($query);
+
+        if (mysql_num_rows($result) == 0) {
+            echo"<script>alert('Sem nenhum pedido!!');</script>";
+        }
+  	?>
 	<div class="container">
 		<div class="div_AcompPedidosTotal col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
@@ -48,62 +65,55 @@
 	            <div class="row" align="center">
 	                <h2>Acompanhamento de pedidos</h2>
 	            </div>
-	            
+
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
 					<table class="table table-striped">
-					     <thead>
-					        <tr class="success">
-					         	<th>ID PEDIDO</th>
-					          	<th>STATUS</th>
-					          	<th>TEMPO ENTREGA</th>
-					        </tr>
-					    </thead>
-					    <tbody>
-					        <tr>
-					          	<td>001</td>
-					          	<td>EM PREPARO</td>
-					          	<td>7m</td>
-					        </tr>
-					        <tr class="success">
-					            <td>002</td>
-					          	<td>AGUARDANDO</td>
-					          	<td>17m</td>
-					        </tr>
-					        <tr>
-					        	<td>003</td>
-					          	<td>AGUARDANDO</td>
-					          	<td>32m</td>
-					        </tr>
-					         <tr class="success">
-					            <td>004</td>
-					          	<td>CANCELADO</td>
-					          	<td>35m</td>
-					        </tr>
-					        <tr>
-					        	<td>005</td>
-					          	<td>EAGUARDANDO</td>
-					          	<td>41m</td>
-					        </tr>
-					    </tbody>
-				    </table>
+						<thead>
+							<tr class="success">
+								<th>PEDIDO</th>
+								<th>CLIENTE</th>
+								<th>STATUS DO PEDIDO</th>
+								<th>VALOR PEDIDO</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+								while ($linha = mysql_fetch_assoc($result)) {
+									echo "<tr><td> " . $linha['id'] ."</td><td> " . $linha['nome'] ."</td><td> ";
+
+									if ($linha['status'] == 0){
+										echo "Aguardando...";
+									}
+									else if ($linha['status'] == 1){
+										echo "Em preparo...";
+									}
+									else if ($linha['status'] == 2){
+										echo "Sendo Entregue...";
+									}
+									echo "</td><td>". $linha['valortotal'] ."</td></tr>";
+								}
+							?>
+
+						</tbody>
+			    	</table>
 				</div>
 
 	           	<div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
-					<p>Seu Pedido será finalizado em <strong>00:23m</strong></p>
+					<!--<p>Seu Pedido será finalizado em <strong>00:23m</strong></p>-->
 				</div>
-	            
+
 	            <div class="row">
 	                <div class="div_BotaoVoltar col-xs-3 col-sm-3 col-md-3 col-lg-3" align="left">
 					    <a href="cliente.php" class="btn btn-info"><span>Voltar</span></a>
 				     </div>
 	            </div>
 
-				
+
 
 			</div>
-			
+
 		</div>
 	</div>
-	
+
 </body>
 </html>
