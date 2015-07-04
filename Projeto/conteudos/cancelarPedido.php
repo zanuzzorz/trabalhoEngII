@@ -42,7 +42,8 @@
 
   if($_SESSION['tipo'] == 1){ //Mesa
     echo "<meta http-equiv='refresh' content='0; url=acompanharPedido.php?cancelado=1'>";
+  }else{
+    echo "<meta http-equiv='refresh' content='0; url=cliente.php?cancelado=1'>";
   }
              
-  echo "<meta http-equiv='refresh' content='0; url=cliente.php?cancelado=1'>";
 ?>
