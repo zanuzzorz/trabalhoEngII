@@ -53,7 +53,7 @@
         $result2 = $banco -> select($query);
 
 
-        $idPedidoV = "select p.id from pedido p inner join item_pedido i on p.id = i.idpedido inner join comanda c on c.id = p.idcomanda where c.idusuario = " .  $usuario[1] . " ";
+        $idPedidoV = "select p.id from pedido p inner join item_pedido i on p.id = i.idpedido inner join comanda c on c.id = p.idcomanda where p.status in (0,1,2,5) and c.idusuario = " .  $usuario[1] . " ";
 		$resultado3 = $banco -> select($idPedidoV);
 		$idP = mysql_fetch_array($resultado3);
 
@@ -81,7 +81,7 @@
 			      </thead>
 			      <tbody>
 			      	<?php
-		      			$sql = "select valor from comanda where idusuario = ".$usuario[1]."";
+		      			$sql = "select valortotal from pedido where id = ".$idP[0]."";
 						$resultado = $banco -> select($sql);
 						$valortotal = mysql_fetch_array($resultado);
 						$valorAAtt = $valortotal[0];
