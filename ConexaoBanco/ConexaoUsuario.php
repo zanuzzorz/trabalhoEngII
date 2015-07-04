@@ -91,9 +91,16 @@
 			return $Resultado;
 		}
 
-		//Busca Usuario por CPF
+		//Atualiza Usuario por CPF
 		public function atualizaSaldoPorCPF($cpf, $saldo){
-      		$sql="UPDATE usuario set saldo = " .$saldo. "+". "saldo WHERE usuario.cpfcnpj = ". $cpf. "";
+      		$sql="UPDATE usuario set saldo = " .$saldo. "+". "saldo WHERE usuario.cpfcnpj = '". $cpf. "'";
+      		$Resultado = parent::select($sql);
+			return $Resultado;
+		}
+
+		//Atualiza Usuario por CPF
+		public function atualizaSaldoPorID($id, $saldo){
+      		$sql="UPDATE usuario set saldo = " .$saldo. "+". "saldo WHERE usuario.id = ". $id. "";
       		$Resultado = parent::select($sql);
 			return $Resultado;
 		}

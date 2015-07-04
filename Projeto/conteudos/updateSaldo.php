@@ -16,9 +16,10 @@
 		$dtInsercao = date('Y-m-d');
 		$id = $_POST['InputID'];
 
+
 		$usuario = new \Entidades\Usuario();
 		$conexaoUsuario = new ConexaoUsuario();
-		$user=$conexaoUsuario->atualizaSaldoPorCPF($cpf, $valor);
+		$user=$conexaoUsuario->atualizaSaldoPorID($id, $valor);
 
 		$historicoSaldo = new \Entidades\HistoricoSaldo();
 		$conexaoHistoricoSaldo = new ConexaoHistoricoSaldo();
