@@ -2,6 +2,7 @@
 	require 'session.php';
 	require("../../ConexaoBanco/ConexaoBase.php");
 	require("../../ConexaoBanco/ConexaoUsuario.php");
+	$_SESSION['status'] =  1;
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -56,6 +57,15 @@
   	?>
 	<div class="container">
 		<div class="div_AcompPedidosTotal col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<?php
+                if(isset($_GET['cancelado'])){
+                    if($_GET['cancelado']==1){
+                        echo "<div class='col-md-offset-3 col-offset-lg-3 col-md-6 col-lg-6 alert alert-warning' align='center'><strong>Atenção!</strong> Seu Pedido Foi Cancelado!</div>";
+                    }else if($_GET['cancelado']==2){
+                        echo "<div class='col-md-offset-3 col-offset-lg-3 col-md-6 col-lg-6 alert alert-danger' align='center'><strong>Atenção!</strong> Erro ao cancelar o Pedido !</div>";
+                  }
+                }
+            ?>
 
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
 				<img src="../imagens/logo/01.png" class="img-responsive img_Logo">
@@ -104,12 +114,13 @@
 
 
 				<div class="row">
-		            <div class="div_BotaoVoltar col-xs-3 col-sm-3 col-md-3 col-lg-3" align="left">
+		            <div class="div_BotaoVoltar col-xs-12 col-sm-12 col-md-12 col-lg-12" align="left">
 			            <?php
 			              if($_SESSION['tipo'] == 0){ //Administrador
 			                echo "<a href='administrador.php' class='btn btn-info pull-left'><span>Voltar</span></a>";
 			              }else if ($_SESSION['tipo'] == 1){//Mesa
 			                echo "<a href='inicio.php' class='btn btn-info pull-left'><span>Voltar</span></a>";
+			                echo "<a href='cancelarPedido.php' class='btn btn-info pull-right'><span>Cancelar Pedido</span></a>";
 			              }else if ($_SESSION['tipo'] == 2){//Cliente
 			                echo "<a href='cliente.php' class='btn btn-info pull-left'><span>Voltar</span></a>";
 			              }
