@@ -133,11 +133,7 @@
                   }
 
                   else if ($linha['status'] == 4){
-                    echo "<option value='4'>Cancelado</option>
-                          <option value='0'>Aguardando</option>
-                          <option value='1'>Em Preparo</option>
-                          <option value='2'>Sendo entregue</option>
-                          <option value='3'>Finalizado</option>";
+                    echo "<option value='4'>Cancelado</option>";
                   }
 
                   echo "</td><td>". $linha['valortotal'] ."</td>";
