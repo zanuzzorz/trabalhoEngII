@@ -2,6 +2,12 @@
 	require 'session.php';
 	require("../../ConexaoBanco/ConexaoBase.php");
 	require("../../ConexaoBanco/ConexaoUsuario.php");
+	require("../../ConexaoBanco/ConexaoPedido.php");
+	require("../../ConexaoBanco/ConexaoComanda.php");
+	require("../../Entidades/Pedido.php");
+  	require("../../Entidades/Comanda.php");
+	error_reporting(0);
+	ini_set(“display_errors”, 0 );
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -43,6 +49,8 @@
 		$banco = new ConexaoBase();
 		$conexao = $banco -> abrirConexao();
 		$ConexaoUsuario = new ConexaoUsuario();
+		$ConexaoComanda = new ConexaoComanda();
+		$ConexaoPedido  = new ConexaoPedido();
 		$usuario=$ConexaoUsuario->buscarUsuarioID($_SESSION['usuario']);
 
 		$query = "SELECT pr.descricao, ip.quantidade, pr.preco, p.status, ip.id FROM pedido p INNER JOIN item_pedido ip ON
@@ -52,12 +60,21 @@
         $result = $banco -> select($query);
         $result2 = $banco -> select($query);
 
-
         $idPedidoV = "select p.id from pedido p inner join item_pedido i on p.id = i.idpedido inner join comanda c on c.id = p.idcomanda where p.status in (0,1,2,5) and c.idusuario = " .  $usuario[1] . " ";
 		$resultado3 = $banco -> select($idPedidoV);
 		$idP = mysql_fetch_array($resultado3);
 
-        if (mysql_num_rows($result) == 0) {
+        $usuario        = $ConexaoUsuario->buscarUsuarioID($_SESSION['usuario']);
+  		$comandaUsuario = $ConexaoComanda->buscarComandaPorUsuario($usuario[1]);
+       	$pedidoComanda  = $ConexaoPedido->buscarPedidoPorComanda($comandaUsuario[0]);
+
+	    $statusP = "SELECT p.status FROM pedido p WHERE p.id = " .  $pedidoComanda[0] . " ";
+	    $resultado4 = $banco -> select($statusP);
+	    $status = mysql_fetch_array($resultado4);
+
+	    if ($pedidoComanda != NULL && $status[0] != 5) {
+	    	echo "<meta http-equiv='refresh' content='0; url=acompanharPedido.php'>";
+	    }else if (mysql_num_rows($result) == 0) {
             echo"<script>alert('Carrinho Vazio!!');</script>";
         }
   	?>

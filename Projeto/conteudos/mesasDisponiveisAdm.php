@@ -132,8 +132,8 @@
 							?>
 						</select>
 				</div>
-				<div class="div_BotaoLiberar col-xs-9 col-sm-9 col-md-9 col-lg-9" align="right">
-						<button type="submit" class="btn btn-success" id="liberarMesa">Liberar Mesa</button>
+				<div class="div_BotaoLiberar col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
+					<button type="submit" class="btn btn-success" id="liberarMesa">Liberar Mesa</button>
 				</div>
 				</form>	
 	        </div>

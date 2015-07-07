@@ -38,7 +38,7 @@
 
 	<!-- jQuery -->
 	<script src="../js/jquery-1.11.3.min.js" type="text/javascript"></script>
-	<script src="../js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>>
+	<script src="../js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
 
 	<!-- CSS -->
 	<link href="../css/style.css" rel="stylesheet">

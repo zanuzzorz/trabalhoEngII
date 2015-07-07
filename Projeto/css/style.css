@@ -250,11 +250,9 @@ body {
 
 .div_MesasDispTotal .div_BotaoVoltar {
 	margin-top: 40px;
-
 }
 .div_MesasDispTotal .div_BotaoLiberar {
 	margin-top: 10px;
-	width: 55%;
 }
 
 .div_MesasDispTotal .div_Select {
@@ -282,6 +280,18 @@ body {
 	position: relative;
 }
 
+/* Mesas Disponiveis Admin */
+.table, tr, td, th{
+	border: 1px solid black;
+	text-align: center;
+}
+
+#table_Status{
+	border: 2px solid black;
+	width: 100%;
+	height:100%;
+}
+
 
 /* ------------------------------------------------------- */
 /* Ajustes Responsivo */
@@ -301,6 +311,14 @@ body {
 	}
 }
 
+
+@media only screen and (max-width: 685px) {
+
+	.div_Administrador .btn-maior {
+		font-size: 14px !important;
+	}
+}
+
 @media only screen and (max-width: 450px) {
 	.div_LoginTotal,
 	.div-CadastroTotal {
@@ -311,15 +329,32 @@ body {
 		margin-left: 0;
 		width: 300px ;
 	}
-}
 
-@media only screen and (max-width: 685px) {
-
-	.div_Administrador .btn-maior {
-		font-size: 14px !important;
+	.div_Cliente .btn-maior {
+		font-size: 12px !important;
+		height: 100px !important;
+		padding-top: 10% !important;
 	}
-
+	.div_Administrador_botoes .btn-menor {
+		padding-top: 10% !important;
+	}
+	.div_MesasDispTotal .div_BotaoVoltar {
+		padding-left: 10px !important;
+	}
+	.div_Administrador_botoes {
+		padding-bottom: 30px !important;
+	}
+	.alert {
+		font-size: 11px !important;
+	}
 }
+
+@media only screen and (max-width: 250px) {
+	.div_Cliente .btn-maior {
+		font-size: 7px !important;
+	}
+}
+
 
 @media only screen and (min-width: 1px) and (max-width: 991px) {
 	.div-RecuperaSenha,
@@ -331,14 +366,3 @@ body {
 
 }
 
-
-.table, tr, td, th{
-	border: 1px solid black;
-	text-align: center;
-}
-
-#table_Status{
-	border: 2px solid black;
-	width: 100%;
-	height:100%;
-}

@@ -45,7 +45,7 @@
                     <a href="login.php?logout=1" class="btn btn-warning pull-right"><span>Sair</span></a>
                 </div>
             </div>
-            <div class="row div_Administrador">
+            <div class="row div_Administrador div_Cliente">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="row" >
                         <a href="acompanharPedido.php" class="btn btn-maior btn-success"><span>ACOMPANHAR FINALIZAÇÃO DE PEDIDOS</span></a>
